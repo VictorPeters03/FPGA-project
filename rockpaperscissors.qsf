@@ -5,7 +5,7 @@
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE115F29C7
 set_global_assignment -name TOP_LEVEL_ENTITY "rockpaperscissors"
-set_global_assignment -name ORIGINAL_QUARTUS_VERSION "14.0"
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 14.0
 set_global_assignment -name LAST_QUARTUS_VERSION "21.1.0 Lite Edition"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "13:44:34 MAY 21,2024"
 set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
@@ -482,7 +482,6 @@ set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_instance_assignment -name IO_STANDARD "2.5 V" -to KEY
-set_global_assignment -name VERILOG_FILE Computer_System/synthesis/Computer_System.v
 set_global_assignment -name QIP_FILE Computer_System/synthesis/Computer_System.qip
 set_global_assignment -name VERILOG_FILE rockpaperscissors.v
 set_global_assignment -name SDC_FILE rockpaperscissors.SDC

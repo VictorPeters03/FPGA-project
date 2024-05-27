@@ -86,11 +86,11 @@ ACDS_VERSION := 21.1
 
 # Quartus Generated JDI File. Required for resolving node instance ID's with 
 # design component names. 
-JDI_FILE := c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/rockpaperscissors.jdi
+JDI_FILE := C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/rockpaperscissors.jdi
 
 # Qsys--generated SOPCINFO file. Required for resolving node instance ID's with 
 # design component names. 
-SOPCINFO_FILE := c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+SOPCINFO_FILE := C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
 
 # Big-Endian operation. 
 # setting BIG_ENDIAN is false
@@ -122,20 +122,20 @@ CPU_NAME = Nios2
 ELF_PATCH_FLAG  += --cpu_name $(CPU_NAME)
 
 # Hardware Divider present. 
-# setting HARDWARE_DIVIDE is true
-ALT_CFLAGS += -mhw-div
+# setting HARDWARE_DIVIDE is false
+ALT_CFLAGS += -mno-hw-div
 
 # Hardware Floating Point Custom Instruction with Divider present. 
 ALT_CFLAGS += -mcustom-fpu-cfg=60-2
 ALT_LDFLAGS += -mcustom-fpu-cfg=60-2
 
 # Hardware Multiplier present. 
-# setting HARDWARE_MULTIPLY is true
-ALT_CFLAGS += -mhw-mul
+# setting HARDWARE_MULTIPLY is false
+ALT_CFLAGS += -mno-hw-mul
 
 # Hardware Mulx present. 
-# setting HARDWARE_MULX is true
-ALT_CFLAGS += -mhw-mulx
+# setting HARDWARE_MULX is false
+ALT_CFLAGS += -mno-hw-mulx
 
 # Debug Core present. 
 # setting HAS_DEBUG_CORE is true
@@ -165,9 +165,9 @@ SOPC_SYSID_FLAG += --sidp=0xff202040
 ELF_PATCH_FLAG  += --sidp 0xff202040
 
 # The SOPC Timestamp 
-# setting SOPC_TIMESTAMP is 1716400871
-SOPC_SYSID_FLAG += --timestamp=1716400871
-ELF_PATCH_FLAG  += --timestamp 1716400871
+# setting SOPC_TIMESTAMP is 1716816539
+SOPC_SYSID_FLAG += --timestamp=1716816539
+ELF_PATCH_FLAG  += --timestamp 1716816539
 
 # Enable JTAG UART driver to recover when host is inactive causing buffer to 
 # full without returning error. Printf will not fail with this recovery. none 

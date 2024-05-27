@@ -101,7 +101,7 @@ ACDS_VERSION := 21.1
 # BUILD_NUMBER: 842
 
 SETTINGS_FILE := settings.bsp
-SOPC_FILE := c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+SOPC_FILE := C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
 
 #-------------------------------------------------------------------------------
 #                             TOOL & COMMAND DEFINITIONS
