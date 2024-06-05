@@ -671,3 +671,760 @@ Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp
 make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
 [BSP build complete]
 [rps build complete]
+10:16:34 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/hello_world.o" "hello_world.c"
+hello_world.c: In function 'main':
+hello_world.c:78:24: warning: format '%f' expects argument of type 'double', but argument 2 has type 'kiss_fft_cpx' [-Wformat=]
+   78 |               printf("%f\n", output[i]);
+      |                       ~^     ~~~~~~~~~
+      |                        |           |
+      |                        double      kiss_fft_cpx
+hello_world.c:44:9: warning: unused variable 'denormalized_buffer' [-Wunused-variable]
+   44 |   float denormalized_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~~~~~~~~
+hello_world.c:42:7: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   42 |   int right_buffer[BUF_SIZE];
+      |       ^~~~~~~~~~~~
+hello_world.c: In function 'fft':
+hello_world.c:206:19: warning: passing argument 2 of 'kiss_fft' from incompatible pointer type [-Wincompatible-pointer-types]
+  206 |     kiss_fft(cfg, input, output);
+      |                   ^~~~~
+      |                   |
+      |                   float *
+In file included from hello_world.c:7:
+kiss_fft.h:93:52: note: expected 'const kiss_fft_cpx *' but argument is of type 'float *'
+   93 | void kiss_fft(kiss_fft_cfg cfg,const kiss_fft_cpx *fin,kiss_fft_cpx *fout);
+      |                                ~~~~~~~~~~~~~~~~~~~~^~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/hello_world.o obj/default/kiss_fft.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1716816539 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 93 KBytes program size (code + initialized data).
+Info:           130971 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+10:16:38 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:16:41 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:17:16 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:21:30 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/hello_world.o" "hello_world.c"
+hello_world.c: In function 'main':
+hello_world.c:78:24: warning: format '%f' expects argument of type 'double', but argument 2 has type 'kiss_fft_cpx' [-Wformat=]
+   78 |               printf("%f\n", output[i]);
+      |                       ~^     ~~~~~~~~~
+      |                        |           |
+      |                        double      kiss_fft_cpx
+hello_world.c:43:9: warning: unused variable 'denormalized_buffer' [-Wunused-variable]
+   43 |   float denormalized_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~~~~~~~~
+hello_world.c:41:7: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   41 |   int right_buffer[BUF_SIZE];
+      |       ^~~~~~~~~~~~
+hello_world.c: In function 'fft':
+hello_world.c:206:19: warning: passing argument 2 of 'kiss_fft' from incompatible pointer type [-Wincompatible-pointer-types]
+  206 |     kiss_fft(cfg, input, output);
+      |                   ^~~~~
+      |                   |
+      |                   float *
+In file included from hello_world.c:6:
+kiss_fft.h:93:52: note: expected 'const kiss_fft_cpx *' but argument is of type 'float *'
+   93 | void kiss_fft(kiss_fft_cfg cfg,const kiss_fft_cpx *fin,kiss_fft_cpx *fout);
+      |                                ~~~~~~~~~~~~~~~~~~~~^~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/hello_world.o obj/default/kiss_fft.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1716816539 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 93 KBytes program size (code + initialized data).
+Info:           130971 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+10:21:32 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:21:49 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:21:50 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:21:53 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:23:31 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/hello_world.o" "hello_world.c"
+hello_world.c: In function 'main':
+hello_world.c:78:24: warning: format '%f' expects argument of type 'double', but argument 2 has type 'kiss_fft_cpx' [-Wformat=]
+   78 |               printf("%f\n", output[i]);
+      |                       ~^     ~~~~~~~~~
+      |                        |           |
+      |                        double      kiss_fft_cpx
+hello_world.c:44:9: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   44 |   float windowed_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~~~~
+hello_world.c:43:9: warning: unused variable 'denormalized_buffer' [-Wunused-variable]
+   43 |   float denormalized_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~~~~~~~~
+hello_world.c:41:7: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   41 |   int right_buffer[BUF_SIZE];
+      |       ^~~~~~~~~~~~
+hello_world.c: In function 'fft':
+hello_world.c:206:19: warning: passing argument 2 of 'kiss_fft' from incompatible pointer type [-Wincompatible-pointer-types]
+  206 |     kiss_fft(cfg, input, output);
+      |                   ^~~~~
+      |                   |
+      |                   float *
+In file included from hello_world.c:6:
+kiss_fft.h:93:52: note: expected 'const kiss_fft_cpx *' but argument is of type 'float *'
+   93 | void kiss_fft(kiss_fft_cfg cfg,const kiss_fft_cpx *fin,kiss_fft_cpx *fout);
+      |                                ~~~~~~~~~~~~~~~~~~~~^~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/hello_world.o obj/default/kiss_fft.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1716816539 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 93 KBytes program size (code + initialized data).
+Info:           130971 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+10:23:33 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:23:42 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:23:43 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:23:47 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:28:53 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/hello_world.o" "hello_world.c"
+hello_world.c: In function 'main':
+hello_world.c:78:24: warning: format '%f' expects argument of type 'double', but argument 2 has type 'kiss_fft_cpx' [-Wformat=]
+   78 |               printf("%f\n", output[i]);
+      |                       ~^     ~~~~~~~~~
+      |                        |           |
+      |                        double      kiss_fft_cpx
+hello_world.c:43:9: warning: unused variable 'denormalized_buffer' [-Wunused-variable]
+   43 |   float denormalized_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~~~~~~~~
+hello_world.c:41:7: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   41 |   int right_buffer[BUF_SIZE];
+      |       ^~~~~~~~~~~~
+hello_world.c: In function 'fft':
+hello_world.c:206:19: warning: passing argument 2 of 'kiss_fft' from incompatible pointer type [-Wincompatible-pointer-types]
+  206 |     kiss_fft(cfg, input, output);
+      |                   ^~~~~
+      |                   |
+      |                   float *
+In file included from hello_world.c:6:
+kiss_fft.h:93:52: note: expected 'const kiss_fft_cpx *' but argument is of type 'float *'
+   93 | void kiss_fft(kiss_fft_cfg cfg,const kiss_fft_cpx *fin,kiss_fft_cpx *fout);
+      |                                ~~~~~~~~~~~~~~~~~~~~^~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/hello_world.o obj/default/kiss_fft.o -lm -msys-lib=m
+c:/intelfpga_lite/21.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/10.3.1/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: obj/default/hello_world.o: in function `main':
+C:\school\Jaar-3\Periode-4\FPGA\FPGA-project\software\rps/hello_world.c:72: undefined reference to `hamming_window'
+collect2.exe: error: ld returned 1 exit status
+Makefile:1015: recipe for target 'rps.elf' failed
+make: *** [rps.elf] Error 1
+10:28:56 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:29:13 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/hello_world.o" "hello_world.c"
+hello_world.c: In function 'main':
+hello_world.c:78:24: warning: format '%f' expects argument of type 'double', but argument 2 has type 'kiss_fft_cpx' [-Wformat=]
+   78 |               printf("%f\n", output[i]);
+      |                       ~^     ~~~~~~~~~
+      |                        |           |
+      |                        double      kiss_fft_cpx
+hello_world.c:43:9: warning: unused variable 'denormalized_buffer' [-Wunused-variable]
+   43 |   float denormalized_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~~~~~~~~
+hello_world.c:41:7: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   41 |   int right_buffer[BUF_SIZE];
+      |       ^~~~~~~~~~~~
+hello_world.c: In function 'fft':
+hello_world.c:206:19: warning: passing argument 2 of 'kiss_fft' from incompatible pointer type [-Wincompatible-pointer-types]
+  206 |     kiss_fft(cfg, input, output);
+      |                   ^~~~~
+      |                   |
+      |                   float *
+In file included from hello_world.c:6:
+kiss_fft.h:93:52: note: expected 'const kiss_fft_cpx *' but argument is of type 'float *'
+   93 | void kiss_fft(kiss_fft_cfg cfg,const kiss_fft_cpx *fin,kiss_fft_cpx *fout);
+      |                                ~~~~~~~~~~~~~~~~~~~~^~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/hello_world.o obj/default/kiss_fft.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1716816539 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 103 KBytes program size (code + initialized data).
+Info:           130961 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+10:29:16 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:29:25 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:31:17 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/hello_world.o" "hello_world.c"
+hello_world.c: In function 'main':
+hello_world.c:77:24: warning: format '%f' expects argument of type 'double', but argument 2 has type 'kiss_fft_cpx' [-Wformat=]
+   77 |               printf("%f\n", output[i]);
+      |                       ~^     ~~~~~~~~~
+      |                        |           |
+      |                        double      kiss_fft_cpx
+hello_world.c:43:9: warning: unused variable 'denormalized_buffer' [-Wunused-variable]
+   43 |   float denormalized_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~~~~~~~~
+hello_world.c:41:7: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   41 |   int right_buffer[BUF_SIZE];
+      |       ^~~~~~~~~~~~
+hello_world.c: In function 'fft':
+hello_world.c:205:19: warning: passing argument 2 of 'kiss_fft' from incompatible pointer type [-Wincompatible-pointer-types]
+  205 |     kiss_fft(cfg, input, output);
+      |                   ^~~~~
+      |                   |
+      |                   float *
+In file included from hello_world.c:6:
+kiss_fft.h:93:52: note: expected 'const kiss_fft_cpx *' but argument is of type 'float *'
+   93 | void kiss_fft(kiss_fft_cfg cfg,const kiss_fft_cpx *fin,kiss_fft_cpx *fout);
+      |                                ~~~~~~~~~~~~~~~~~~~~^~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/hello_world.o obj/default/kiss_fft.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1716816539 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 103 KBytes program size (code + initialized data).
+Info:           130961 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+10:31:19 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:31:27 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:33:53 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/hello_world.o" "hello_world.c"
+hello_world.c: In function 'main':
+hello_world.c:77:24: warning: format '%f' expects argument of type 'double', but argument 2 has type 'kiss_fft_cpx' [-Wformat=]
+   77 |               printf("%f\n", output[i]);
+      |                       ~^     ~~~~~~~~~
+      |                        |           |
+      |                        double      kiss_fft_cpx
+hello_world.c:43:9: warning: unused variable 'denormalized_buffer' [-Wunused-variable]
+   43 |   float denormalized_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~~~~~~~~
+hello_world.c:41:7: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   41 |   int right_buffer[BUF_SIZE];
+      |       ^~~~~~~~~~~~
+hello_world.c: In function 'fft':
+hello_world.c:205:19: warning: passing argument 2 of 'kiss_fft' from incompatible pointer type [-Wincompatible-pointer-types]
+  205 |     kiss_fft(cfg, input, output);
+      |                   ^~~~~
+      |                   |
+      |                   float *
+In file included from hello_world.c:6:
+kiss_fft.h:93:52: note: expected 'const kiss_fft_cpx *' but argument is of type 'float *'
+   93 | void kiss_fft(kiss_fft_cfg cfg,const kiss_fft_cpx *fin,kiss_fft_cpx *fout);
+      |                                ~~~~~~~~~~~~~~~~~~~~^~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/hello_world.o obj/default/kiss_fft.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1716816539 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 103 KBytes program size (code + initialized data).
+Info:           130961 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+10:33:55 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:34:19 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:34:20 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:34:22 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:42:55 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/hello_world.o" "hello_world.c"
+hello_world.c: In function 'main':
+hello_world.c:77:24: warning: format '%f' expects argument of type 'double', but argument 2 has type 'kiss_fft_cpx' [-Wformat=]
+   77 |               printf("%f\n", output[i]);
+      |                       ~^     ~~~~~~~~~
+      |                        |           |
+      |                        double      kiss_fft_cpx
+hello_world.c:43:9: warning: unused variable 'denormalized_buffer' [-Wunused-variable]
+   43 |   float denormalized_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~~~~~~~~
+hello_world.c:41:7: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   41 |   int right_buffer[BUF_SIZE];
+      |       ^~~~~~~~~~~~
+hello_world.c: In function 'fft':
+hello_world.c:173:19: warning: passing argument 2 of 'kiss_fft' from incompatible pointer type [-Wincompatible-pointer-types]
+  173 |     kiss_fft(cfg, input, output);
+      |                   ^~~~~
+      |                   |
+      |                   float *
+In file included from hello_world.c:6:
+kiss_fft.h:93:52: note: expected 'const kiss_fft_cpx *' but argument is of type 'float *'
+   93 | void kiss_fft(kiss_fft_cfg cfg,const kiss_fft_cpx *fin,kiss_fft_cpx *fout);
+      |                                ~~~~~~~~~~~~~~~~~~~~^~~
+hello_world.c:167:15: warning: variable 'in' set but not used [-Wunused-but-set-variable]
+  167 |  kiss_fft_cpx in[FFT_SIZE];
+      |               ^~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/hello_world.o obj/default/kiss_fft.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1716816539 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 103 KBytes program size (code + initialized data).
+Info:           130961 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+10:42:57 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:43:04 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:43:06 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:43:07 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:43:34 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:43:35 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:43:38 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:46:12 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:46:13 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:46:16 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:51:05 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/hello_world.o" "hello_world.c"
+hello_world.c: In function 'main':
+hello_world.c:77:24: warning: format '%f' expects argument of type 'double', but argument 2 has type 'kiss_fft_cpx' [-Wformat=]
+   77 |               printf("%f\n", output[i]);
+      |                       ~^     ~~~~~~~~~
+      |                        |           |
+      |                        double      kiss_fft_cpx
+hello_world.c:43:9: warning: unused variable 'denormalized_buffer' [-Wunused-variable]
+   43 |   float denormalized_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~~~~~~~~
+hello_world.c:41:7: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   41 |   int right_buffer[BUF_SIZE];
+      |       ^~~~~~~~~~~~
+hello_world.c: In function 'fft':
+hello_world.c:162:11: warning: implicit declaration of function 'kiss_fftr_alloc'; did you mean 'kiss_fft_alloc'? [-Wimplicit-function-declaration]
+  162 |     cfg = kiss_fftr_alloc(FFT_SIZE, 0, 0, 0);
+      |           ^~~~~~~~~~~~~~~
+      |           kiss_fft_alloc
+hello_world.c:162:9: warning: assignment to 'kiss_fft_cfg' {aka 'struct kiss_fft_state *'} from 'int' makes pointer from integer without a cast [-Wint-conversion]
+  162 |     cfg = kiss_fftr_alloc(FFT_SIZE, 0, 0, 0);
+      |         ^
+hello_world.c:171:5: warning: implicit declaration of function 'kiss_fftr'; did you mean 'kiss_fft'? [-Wimplicit-function-declaration]
+  171 |     kiss_fftr(cfg, in, output);
+      |     ^~~~~~~~~
+      |     kiss_fft
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/hello_world.o obj/default/kiss_fft.o -lm -msys-lib=m
+c:/intelfpga_lite/21.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/10.3.1/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: obj/default/hello_world.o: in function `fft':
+C:\school\Jaar-3\Periode-4\FPGA\FPGA-project\software\rps/hello_world.c:162: undefined reference to `kiss_fftr_alloc'
+c:/intelfpga_lite/21.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/10.3.1/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: C:\school\Jaar-3\Periode-4\FPGA\FPGA-project\software\rps/hello_world.c:171: undefined reference to `kiss_fftr'
+collect2.exe: error: ld returned 1 exit status
+Makefile:1015: recipe for target 'rps.elf' failed
+make: *** [rps.elf] Error 1
+10:51:08 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:54:25 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/hello_world.o" "hello_world.c"
+hello_world.c: In function 'main':
+hello_world.c:77:24: warning: format '%f' expects argument of type 'double', but argument 2 has type 'kiss_fft_cpx' [-Wformat=]
+   77 |               printf("%f\n", output[i]);
+      |                       ~^     ~~~~~~~~~
+      |                        |           |
+      |                        double      kiss_fft_cpx
+hello_world.c:43:9: warning: unused variable 'denormalized_buffer' [-Wunused-variable]
+   43 |   float denormalized_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~~~~~~~~
+hello_world.c:41:7: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   41 |   int right_buffer[BUF_SIZE];
+      |       ^~~~~~~~~~~~
+hello_world.c: At top level:
+hello_world.c:124:6: error: conflicting types for 'normalize_audio'
+  124 | void normalize_audio(int *input_buffer, float *output_buffer, int size) {
+      |      ^~~~~~~~~~~~~~~
+hello_world.c:18:6: note: previous declaration of 'normalize_audio' was here
+   18 | void normalize_audio(float *, float *, int);
+      |      ^~~~~~~~~~~~~~~
+Makefile:726: recipe for target 'obj/default/hello_world.o' failed
+make: *** [obj/default/hello_world.o] Error 1
+10:54:26 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:54:31 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/hello_world.o" "hello_world.c"
+hello_world.c: In function 'main':
+hello_world.c:77:24: warning: format '%f' expects argument of type 'double', but argument 2 has type 'kiss_fft_cpx' [-Wformat=]
+   77 |               printf("%f\n", output[i]);
+      |                       ~^     ~~~~~~~~~
+      |                        |           |
+      |                        double      kiss_fft_cpx
+hello_world.c:43:9: warning: unused variable 'denormalized_buffer' [-Wunused-variable]
+   43 |   float denormalized_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~~~~~~~~
+hello_world.c:41:7: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   41 |   int right_buffer[BUF_SIZE];
+      |       ^~~~~~~~~~~~
+hello_world.c: At top level:
+hello_world.c:124:6: error: conflicting types for 'normalize_audio'
+  124 | void normalize_audio(int *input_buffer, float *output_buffer, int size) {
+      |      ^~~~~~~~~~~~~~~
+hello_world.c:18:6: note: previous declaration of 'normalize_audio' was here
+   18 | void normalize_audio(float *, float *, int);
+      |      ^~~~~~~~~~~~~~~
+Makefile:726: recipe for target 'obj/default/hello_world.o' failed
+make: *** [obj/default/hello_world.o] Error 1
+10:54:57 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/hello_world.o" "hello_world.c"
+hello_world.c: In function 'main':
+hello_world.c:77:24: warning: format '%f' expects argument of type 'double', but argument 2 has type 'kiss_fft_cpx' [-Wformat=]
+   77 |               printf("%f\n", output[i]);
+      |                       ~^     ~~~~~~~~~
+      |                        |           |
+      |                        double      kiss_fft_cpx
+hello_world.c:43:9: warning: unused variable 'denormalized_buffer' [-Wunused-variable]
+   43 |   float denormalized_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~~~~~~~~
+hello_world.c:41:7: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   41 |   int right_buffer[BUF_SIZE];
+      |       ^~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/hello_world.o obj/default/kiss_fft.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1716816539 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 103 KBytes program size (code + initialized data).
+Info:           130961 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+10:55:00 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:55:58 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:55:59 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:56:01 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+13:56:39 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling fft/kiss_fft.c to obj/default/fft/kiss_fft.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/fft/kiss_fft.o" "fft/kiss_fft.c"
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c:6:10: fatal error: kiss_fft.h: No such file or directory
+    6 | #include "kiss_fft.h"
+      |          ^~~~~~~~~~~~
+compilation terminated.
+Makefile:726: recipe for target 'obj/default/main.o' failed
+make: *** [obj/default/main.o] Error 1
+13:56:42 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+13:57:07 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:77:24: warning: format '%f' expects argument of type 'double', but argument 2 has type 'kiss_fft_cpx' [-Wformat=]
+   77 |               printf("%f\n", output[i]);
+      |                       ~^     ~~~~~~~~~
+      |                        |           |
+      |                        double      kiss_fft_cpx
+main.c:43:9: warning: unused variable 'denormalized_buffer' [-Wunused-variable]
+   43 |   float denormalized_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~~~~~~~~
+main.c:41:7: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   41 |   int right_buffer[BUF_SIZE];
+      |       ^~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1716816539 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 103 KBytes program size (code + initialized data).
+Info:           130961 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+13:57:10 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+13:57:37 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+13:57:38 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+13:57:59 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+14:01:11 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+14:01:12 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+14:01:17 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+14:20:46 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+14:20:47 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+14:20:52 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+14:23:19 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+14:23:21 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+14:23:24 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+14:30:47 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+14:30:49 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+14:30:53 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+14:34:33 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+14:34:34 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+14:34:38 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+14:34:54 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+14:40:37 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:39:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   39 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1716816539 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 103 KBytes program size (code + initialized data).
+Info:           130961 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+14:40:40 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+14:40:45 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]

@@ -90,8 +90,8 @@ ACDS_VERSION := 21.1
 ELF := rps.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS += hello_world.c
-C_SRCS += kiss_fft.c
+C_SRCS += fft/kiss_fft.c
+C_SRCS += main.c
 CXX_SRCS :=
 ASM_SRCS :=
 
