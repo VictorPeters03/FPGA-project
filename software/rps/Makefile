@@ -90,8 +90,8 @@ ACDS_VERSION := 21.1
 ELF := rps.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS += fft/kiss_fft.c
 C_SRCS += main.c
+C_SRCS += fft/kiss_fft.c
 C_SRCS += mfcc/libmfcc.c
 CXX_SRCS :=
 ASM_SRCS :=
@@ -1030,3 +1030,5 @@ $(call adjust-path,$(OBJDUMP_NAME)) : $(call adjust-path,$(ELF))
 .PHONY: print-elf-name
 print-elf-name:
 	@$(ECHO) $(ELF)
+
+

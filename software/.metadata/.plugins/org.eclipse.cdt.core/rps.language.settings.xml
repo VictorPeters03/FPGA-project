@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project>
-	<configuration id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1179453714" name="Nios II">
+	<configuration id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.71022461" name="Nios II">
 		<extension point="org.eclipse.cdt.core.LanguageSettingsProvider">
 			<provider id="altera.tool.Nios2GCCBuiltinSpecsDetector">
 				<language id="org.eclipse.cdt.core.gcc">
@@ -2154,20 +2154,6 @@
 						<entry kind="macro" name="ALT_SINGLE_THREADED" value=""/>
 						<entry kind="macro" name="__hal__" value=""/>
 					</resource>
-					<resource project-relative-path="kiss_fft.c">
-						<entry kind="includePath" name="/rps_bsp/HAL/inc">
-							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
-						</entry>
-						<entry kind="includePath" name="/rps_bsp">
-							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
-						</entry>
-						<entry kind="includePath" name="/rps_bsp/drivers/inc">
-							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
-						</entry>
-						<entry kind="macro" name="ALT_NO_INSTRUCTION_EMULATION" value=""/>
-						<entry kind="macro" name="ALT_SINGLE_THREADED" value=""/>
-						<entry kind="macro" name="__hal__" value=""/>
-					</resource>
 					<resource project-relative-path="HAL/src/alt_exit.c">
 						<entry kind="includePath" name="/rps_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
@@ -2253,6 +2239,20 @@
 						<entry kind="macro" name="__hal__" value=""/>
 					</resource>
 					<resource project-relative-path="HAL/src/alt_putchar.c">
+						<entry kind="includePath" name="/rps_bsp/HAL/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="includePath" name="/rps_bsp">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="includePath" name="/rps_bsp/drivers/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="ALT_NO_INSTRUCTION_EMULATION" value=""/>
+						<entry kind="macro" name="ALT_SINGLE_THREADED" value=""/>
+						<entry kind="macro" name="__hal__" value=""/>
+					</resource>
+					<resource project-relative-path="mfcc/libmfcc.c">
 						<entry kind="includePath" name="/rps_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -2826,20 +2826,6 @@
 						<entry kind="macro" name="ALT_SINGLE_THREADED" value=""/>
 						<entry kind="macro" name="__hal__" value=""/>
 					</resource>
-					<resource project-relative-path="tools/fftutil.c">
-						<entry kind="includePath" name="/rps_bsp/HAL/inc">
-							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
-						</entry>
-						<entry kind="includePath" name="/rps_bsp">
-							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
-						</entry>
-						<entry kind="includePath" name="/rps_bsp/drivers/inc">
-							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
-						</entry>
-						<entry kind="macro" name="ALT_NO_INSTRUCTION_EMULATION" value=""/>
-						<entry kind="macro" name="ALT_SINGLE_THREADED" value=""/>
-						<entry kind="macro" name="__hal__" value=""/>
-					</resource>
 					<resource project-relative-path="HAL/src/alt_release_fd.c">
 						<entry kind="includePath" name="/rps_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
@@ -2967,20 +2953,6 @@
 						<entry kind="macro" name="__hal__" value=""/>
 					</resource>
 					<resource project-relative-path="HAL/src/alt_main.c">
-						<entry kind="includePath" name="/rps_bsp/HAL/inc">
-							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
-						</entry>
-						<entry kind="includePath" name="/rps_bsp">
-							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
-						</entry>
-						<entry kind="includePath" name="/rps_bsp/drivers/inc">
-							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
-						</entry>
-						<entry kind="macro" name="ALT_NO_INSTRUCTION_EMULATION" value=""/>
-						<entry kind="macro" name="ALT_SINGLE_THREADED" value=""/>
-						<entry kind="macro" name="__hal__" value=""/>
-					</resource>
-					<resource project-relative-path="hello_world.c">
 						<entry kind="includePath" name="/rps_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>

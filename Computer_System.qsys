@@ -477,7 +477,7 @@
   <parameter name="line_in_bypass" value="true" />
   <parameter name="mic_attenuation" value="-6dB" />
   <parameter name="mic_bypass" value="false" />
-  <parameter name="sampling_rate" value="32 kHz" />
+  <parameter name="sampling_rate" value="8 kHz" />
   <parameter name="video_format" value="NTSC" />
  </module>
  <module

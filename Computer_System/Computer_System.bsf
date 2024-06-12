@@ -445,7 +445,7 @@ https://fpgasoftware.intel.com/eula.
 		(text "clk" (rect 165 1187 348 2384)(font "Arial" (color 0 0 0)))
 		(text "system_pll_ref_reset" (rect 35 1203 190 2419)(font "Arial" (color 128 0 0)(font_size 9)))
 		(text "reset" (rect 165 1227 360 2464)(font "Arial" (color 0 0 0)))
-		(text " Computer_System " (rect 316 1248 734 2506)(font "Arial" ))
+		(text " system " (rect 365 1248 778 2506)(font "Arial" ))
 		(line (pt 160 32)(pt 240 32)(line_width 1))
 		(line (pt 240 32)(pt 240 1248)(line_width 1))
 		(line (pt 160 1248)(pt 240 1248)(line_width 1))

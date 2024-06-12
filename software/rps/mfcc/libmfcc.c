@@ -35,7 +35,6 @@ double GetCoefficient(double* spectralData, unsigned int samplingRate, unsigned 
 
 	result = NormalizationFactor(NumFilters, m);
 
-
 	for(l = 1; l <= NumFilters; l++)
 	{
 		// Compute inner sum
@@ -51,6 +50,7 @@ double GetCoefficient(double* spectralData, unsigned int samplingRate, unsigned 
 		}
 
 		innerSum = innerSum * cos(((m * PI) / NumFilters) * (l - 0.5f));
+
 
 		outerSum += innerSum;
 	}

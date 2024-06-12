@@ -37,10 +37,4 @@
 		<nature>com.altera.sbtgui.project.SBTGUIAppNature</nature>
 		<nature>com.altera.sbtgui.project.SBTGUIManagedNature</nature>
 	</natures>
-	<variableList>
-		<variable>
-			<name>fftw3</name>
-			<value>file:/C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps/fftw3-dir/libfftw3f-3.dll</value>
-		</variable>
-	</variableList>
 </projectDescription>

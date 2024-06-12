@@ -5,11 +5,11 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 21.1 842 (Future versions may contain additional information.) -->
- <!-- 2024.05.27.15:28:59 -->
+ <!-- 2024.06.10.16:14:43 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1716816539</value>
+  <value>1718028883</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -218,7 +218,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="sampling_rate">
    <type>java.lang.String</type>
-   <value>32 kHz</value>
+   <value>8 kHz</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -234,7 +234,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="sr_register">
    <type>int</type>
-   <value>6</value>
+   <value>3</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -844,7 +844,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1716816539</value>
+   <value>1718028883</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -18989,7 +18989,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1716816539</value>
+   <value>1718028883</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -19009,7 +19009,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1716816539</value>
+   <value>1718028883</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -19025,7 +19025,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1716816539</value>
+   <value>1718028883</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
