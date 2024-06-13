@@ -480,3 +480,2287 @@ Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp
 make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
 [BSP build complete]
 [rps build complete]
+09:35:16 **** Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+In file included from main.c:6:
+address_map_nios2.h:11: warning: "SDRAM_BASE" redefined
+   11 | #define SDRAM_BASE   0x00000000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:469: note: this is the location of the previous definition
+  469 | #define SDRAM_BASE 0x0
+      | 
+In file included from main.c:6:
+address_map_nios2.h:30: warning: "HEX3_HEX0_BASE" redefined
+   30 | #define HEX3_HEX0_BASE   0xFF200020
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:291: note: this is the location of the previous definition
+  291 | #define HEX3_HEX0_BASE 0xff200020
+      | 
+In file included from main.c:6:
+address_map_nios2.h:31: warning: "HEX7_HEX4_BASE" redefined
+   31 | #define HEX7_HEX4_BASE   0xFF200030
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:318: note: this is the location of the previous definition
+  318 | #define HEX7_HEX4_BASE 0xff200030
+      | 
+In file included from main.c:6:
+address_map_nios2.h:39: warning: "JTAG_UART_BASE" redefined
+   39 | #define JTAG_UART_BASE   0xFF201000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:397: note: this is the location of the previous definition
+  397 | #define JTAG_UART_BASE 0xff201000
+      | 
+In file included from main.c:6:
+address_map_nios2.h:44: warning: "AV_CONFIG_BASE" redefined
+   44 | #define AV_CONFIG_BASE   0xFF203000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:64: note: this is the location of the previous definition
+   64 | #define AV_CONFIG_BASE 0xff203000
+      | 
+main.c: In function 'main':
+main.c:46:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   46 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:45:18: warning: unused variable 'output' [-Wunused-variable]
+   45 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:44:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   44 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:43:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   43 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:42:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   42 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:181:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  181 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 102 KBytes program size (code + initialized data).
+Info:           130961 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+09:35:19 **** Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+09:35:36 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+09:37:09 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+In file included from main.c:6:
+address_map_nios2.h:11: warning: "SDRAM_BASE" redefined
+   11 | #define SDRAM_BASE   0x00000000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:469: note: this is the location of the previous definition
+  469 | #define SDRAM_BASE 0x0
+      | 
+In file included from main.c:6:
+address_map_nios2.h:30: warning: "HEX3_HEX0_BASE" redefined
+   30 | #define HEX3_HEX0_BASE   0xFF200020
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:291: note: this is the location of the previous definition
+  291 | #define HEX3_HEX0_BASE 0xff200020
+      | 
+In file included from main.c:6:
+address_map_nios2.h:31: warning: "HEX7_HEX4_BASE" redefined
+   31 | #define HEX7_HEX4_BASE   0xFF200030
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:318: note: this is the location of the previous definition
+  318 | #define HEX7_HEX4_BASE 0xff200030
+      | 
+In file included from main.c:6:
+address_map_nios2.h:39: warning: "JTAG_UART_BASE" redefined
+   39 | #define JTAG_UART_BASE   0xFF201000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:397: note: this is the location of the previous definition
+  397 | #define JTAG_UART_BASE 0xff201000
+      | 
+In file included from main.c:6:
+address_map_nios2.h:44: warning: "AV_CONFIG_BASE" redefined
+   44 | #define AV_CONFIG_BASE   0xFF203000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:64: note: this is the location of the previous definition
+   64 | #define AV_CONFIG_BASE 0xff203000
+      | 
+main.c: In function 'main':
+main.c:46:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   46 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:45:18: warning: unused variable 'output' [-Wunused-variable]
+   45 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:44:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   44 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:43:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   43 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:42:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   42 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:181:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  181 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 102 KBytes program size (code + initialized data).
+Info:           130961 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+09:37:11 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+09:37:19 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+09:39:39 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+In file included from main.c:6:
+address_map_nios2.h:11: warning: "SDRAM_BASE" redefined
+   11 | #define SDRAM_BASE   0x00000000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:469: note: this is the location of the previous definition
+  469 | #define SDRAM_BASE 0x0
+      | 
+In file included from main.c:6:
+address_map_nios2.h:30: warning: "HEX3_HEX0_BASE" redefined
+   30 | #define HEX3_HEX0_BASE   0xFF200020
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:291: note: this is the location of the previous definition
+  291 | #define HEX3_HEX0_BASE 0xff200020
+      | 
+In file included from main.c:6:
+address_map_nios2.h:31: warning: "HEX7_HEX4_BASE" redefined
+   31 | #define HEX7_HEX4_BASE   0xFF200030
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:318: note: this is the location of the previous definition
+  318 | #define HEX7_HEX4_BASE 0xff200030
+      | 
+In file included from main.c:6:
+address_map_nios2.h:39: warning: "JTAG_UART_BASE" redefined
+   39 | #define JTAG_UART_BASE   0xFF201000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:397: note: this is the location of the previous definition
+  397 | #define JTAG_UART_BASE 0xff201000
+      | 
+In file included from main.c:6:
+address_map_nios2.h:44: warning: "AV_CONFIG_BASE" redefined
+   44 | #define AV_CONFIG_BASE   0xFF203000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:64: note: this is the location of the previous definition
+   64 | #define AV_CONFIG_BASE 0xff203000
+      | 
+main.c: In function 'main':
+main.c:46:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   46 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:45:18: warning: unused variable 'output' [-Wunused-variable]
+   45 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:44:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   44 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:43:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   43 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:42:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   42 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:180:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  180 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 102 KBytes program size (code + initialized data).
+Info:           130961 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+09:39:41 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+09:39:49 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+09:47:11 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+In file included from main.c:6:
+address_map_nios2.h:11: warning: "SDRAM_BASE" redefined
+   11 | #define SDRAM_BASE   0x00000000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:469: note: this is the location of the previous definition
+  469 | #define SDRAM_BASE 0x0
+      | 
+In file included from main.c:6:
+address_map_nios2.h:30: warning: "HEX3_HEX0_BASE" redefined
+   30 | #define HEX3_HEX0_BASE   0xFF200020
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:291: note: this is the location of the previous definition
+  291 | #define HEX3_HEX0_BASE 0xff200020
+      | 
+In file included from main.c:6:
+address_map_nios2.h:31: warning: "HEX7_HEX4_BASE" redefined
+   31 | #define HEX7_HEX4_BASE   0xFF200030
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:318: note: this is the location of the previous definition
+  318 | #define HEX7_HEX4_BASE 0xff200030
+      | 
+In file included from main.c:6:
+address_map_nios2.h:39: warning: "JTAG_UART_BASE" redefined
+   39 | #define JTAG_UART_BASE   0xFF201000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:397: note: this is the location of the previous definition
+  397 | #define JTAG_UART_BASE 0xff201000
+      | 
+In file included from main.c:6:
+address_map_nios2.h:44: warning: "AV_CONFIG_BASE" redefined
+   44 | #define AV_CONFIG_BASE   0xFF203000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:64: note: this is the location of the previous definition
+   64 | #define AV_CONFIG_BASE 0xff203000
+      | 
+main.c: In function 'main':
+main.c:46:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   46 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:45:18: warning: unused variable 'output' [-Wunused-variable]
+   45 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:44:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   44 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:43:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   43 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:42:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   42 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:41:9: warning: variable 'left_buffer' set but not used [-Wunused-but-set-variable]
+   41 |     int left_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:180:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  180 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 102 KBytes program size (code + initialized data).
+Info:           130962 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+09:47:13 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+09:47:23 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:05:55 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+In file included from main.c:6:
+address_map_nios2.h:11: warning: "SDRAM_BASE" redefined
+   11 | #define SDRAM_BASE   0x00000000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:469: note: this is the location of the previous definition
+  469 | #define SDRAM_BASE 0x0
+      | 
+In file included from main.c:6:
+address_map_nios2.h:30: warning: "HEX3_HEX0_BASE" redefined
+   30 | #define HEX3_HEX0_BASE   0xFF200020
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:291: note: this is the location of the previous definition
+  291 | #define HEX3_HEX0_BASE 0xff200020
+      | 
+In file included from main.c:6:
+address_map_nios2.h:31: warning: "HEX7_HEX4_BASE" redefined
+   31 | #define HEX7_HEX4_BASE   0xFF200030
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:318: note: this is the location of the previous definition
+  318 | #define HEX7_HEX4_BASE 0xff200030
+      | 
+In file included from main.c:6:
+address_map_nios2.h:39: warning: "JTAG_UART_BASE" redefined
+   39 | #define JTAG_UART_BASE   0xFF201000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:397: note: this is the location of the previous definition
+  397 | #define JTAG_UART_BASE 0xff201000
+      | 
+In file included from main.c:6:
+address_map_nios2.h:44: warning: "AV_CONFIG_BASE" redefined
+   44 | #define AV_CONFIG_BASE   0xFF203000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:64: note: this is the location of the previous definition
+   64 | #define AV_CONFIG_BASE 0xff203000
+      | 
+main.c: In function 'main':
+main.c:82:26: error: unknown type name 'write'
+   82 |                          write the int buffer to the SDRAM
+      |                          ^~~~~
+main.c:82:36: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'int'
+   82 |                          write the int buffer to the SDRAM
+      |                                    ^~~
+main.c:46:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   46 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:45:18: warning: unused variable 'output' [-Wunused-variable]
+   45 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:44:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   44 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:43:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   43 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:42:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   42 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:180:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  180 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Makefile:727: recipe for target 'obj/default/main.o' failed
+make: *** [obj/default/main.o] Error 1
+10:05:56 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:07:20 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+In file included from main.c:6:
+address_map_nios2.h:30: warning: "HEX3_HEX0_BASE" redefined
+   30 | #define HEX3_HEX0_BASE   0xFF200020
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:291: note: this is the location of the previous definition
+  291 | #define HEX3_HEX0_BASE 0xff200020
+      | 
+In file included from main.c:6:
+address_map_nios2.h:31: warning: "HEX7_HEX4_BASE" redefined
+   31 | #define HEX7_HEX4_BASE   0xFF200030
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:318: note: this is the location of the previous definition
+  318 | #define HEX7_HEX4_BASE 0xff200030
+      | 
+In file included from main.c:6:
+address_map_nios2.h:39: warning: "JTAG_UART_BASE" redefined
+   39 | #define JTAG_UART_BASE   0xFF201000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:397: note: this is the location of the previous definition
+  397 | #define JTAG_UART_BASE 0xff201000
+      | 
+In file included from main.c:6:
+address_map_nios2.h:44: warning: "AV_CONFIG_BASE" redefined
+   44 | #define AV_CONFIG_BASE   0xFF203000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:64: note: this is the location of the previous definition
+   64 | #define AV_CONFIG_BASE 0xff203000
+      | 
+main.c: In function 'main':
+main.c:46:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   46 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:45:18: warning: unused variable 'output' [-Wunused-variable]
+   45 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:44:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   44 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:43:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   43 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:42:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   42 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:180:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  180 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 102 KBytes program size (code + initialized data).
+Info:           130961 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+10:07:37 **** Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:07:38 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:07:45 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:08:50 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+In file included from main.c:6:
+address_map_nios2.h:30: warning: "HEX3_HEX0_BASE" redefined
+   30 | #define HEX3_HEX0_BASE   0xFF200020
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:291: note: this is the location of the previous definition
+  291 | #define HEX3_HEX0_BASE 0xff200020
+      | 
+In file included from main.c:6:
+address_map_nios2.h:31: warning: "HEX7_HEX4_BASE" redefined
+   31 | #define HEX7_HEX4_BASE   0xFF200030
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:318: note: this is the location of the previous definition
+  318 | #define HEX7_HEX4_BASE 0xff200030
+      | 
+In file included from main.c:6:
+address_map_nios2.h:39: warning: "JTAG_UART_BASE" redefined
+   39 | #define JTAG_UART_BASE   0xFF201000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:397: note: this is the location of the previous definition
+  397 | #define JTAG_UART_BASE 0xff201000
+      | 
+In file included from main.c:6:
+address_map_nios2.h:44: warning: "AV_CONFIG_BASE" redefined
+   44 | #define AV_CONFIG_BASE   0xFF203000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:64: note: this is the location of the previous definition
+   64 | #define AV_CONFIG_BASE 0xff203000
+      | 
+main.c: In function 'main':
+main.c:46:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   46 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:45:18: warning: unused variable 'output' [-Wunused-variable]
+   45 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:44:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   44 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:43:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   43 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:42:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   42 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:180:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  180 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 102 KBytes program size (code + initialized data).
+Info:           130961 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+10:08:52 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:09:00 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:13:15 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+In file included from main.c:6:
+address_map_nios2.h:30: warning: "HEX3_HEX0_BASE" redefined
+   30 | #define HEX3_HEX0_BASE   0xFF200020
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:291: note: this is the location of the previous definition
+  291 | #define HEX3_HEX0_BASE 0xff200020
+      | 
+In file included from main.c:6:
+address_map_nios2.h:31: warning: "HEX7_HEX4_BASE" redefined
+   31 | #define HEX7_HEX4_BASE   0xFF200030
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:318: note: this is the location of the previous definition
+  318 | #define HEX7_HEX4_BASE 0xff200030
+      | 
+In file included from main.c:6:
+address_map_nios2.h:39: warning: "JTAG_UART_BASE" redefined
+   39 | #define JTAG_UART_BASE   0xFF201000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:397: note: this is the location of the previous definition
+  397 | #define JTAG_UART_BASE 0xff201000
+      | 
+In file included from main.c:6:
+address_map_nios2.h:44: warning: "AV_CONFIG_BASE" redefined
+   44 | #define AV_CONFIG_BASE   0xFF203000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:64: note: this is the location of the previous definition
+   64 | #define AV_CONFIG_BASE 0xff203000
+      | 
+main.c: In function 'main':
+main.c:47:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   47 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:46:18: warning: unused variable 'output' [-Wunused-variable]
+   46 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:45:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   45 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:44:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   44 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:43:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   43 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:184:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  184 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 102 KBytes program size (code + initialized data).
+Info:           130961 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+10:13:17 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:13:23 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:15:32 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+In file included from main.c:6:
+address_map_nios2.h:30: warning: "HEX3_HEX0_BASE" redefined
+   30 | #define HEX3_HEX0_BASE   0xFF200020
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:291: note: this is the location of the previous definition
+  291 | #define HEX3_HEX0_BASE 0xff200020
+      | 
+In file included from main.c:6:
+address_map_nios2.h:31: warning: "HEX7_HEX4_BASE" redefined
+   31 | #define HEX7_HEX4_BASE   0xFF200030
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:318: note: this is the location of the previous definition
+  318 | #define HEX7_HEX4_BASE 0xff200030
+      | 
+In file included from main.c:6:
+address_map_nios2.h:39: warning: "JTAG_UART_BASE" redefined
+   39 | #define JTAG_UART_BASE   0xFF201000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:397: note: this is the location of the previous definition
+  397 | #define JTAG_UART_BASE 0xff201000
+      | 
+In file included from main.c:6:
+address_map_nios2.h:44: warning: "AV_CONFIG_BASE" redefined
+   44 | #define AV_CONFIG_BASE   0xFF203000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:64: note: this is the location of the previous definition
+   64 | #define AV_CONFIG_BASE 0xff203000
+      | 
+main.c: In function 'main':
+main.c:48:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   48 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:47:18: warning: unused variable 'output' [-Wunused-variable]
+   47 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:46:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   46 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:45:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   45 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:44:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   44 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:187:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  187 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 102 KBytes program size (code + initialized data).
+Info:           130961 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+10:15:34 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:15:38 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+10:21:46 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+In file included from main.c:6:
+address_map_nios2.h:30: warning: "HEX3_HEX0_BASE" redefined
+   30 | #define HEX3_HEX0_BASE   0xFF200020
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:291: note: this is the location of the previous definition
+  291 | #define HEX3_HEX0_BASE 0xff200020
+      | 
+In file included from main.c:6:
+address_map_nios2.h:31: warning: "HEX7_HEX4_BASE" redefined
+   31 | #define HEX7_HEX4_BASE   0xFF200030
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:318: note: this is the location of the previous definition
+  318 | #define HEX7_HEX4_BASE 0xff200030
+      | 
+In file included from main.c:6:
+address_map_nios2.h:39: warning: "JTAG_UART_BASE" redefined
+   39 | #define JTAG_UART_BASE   0xFF201000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:397: note: this is the location of the previous definition
+  397 | #define JTAG_UART_BASE 0xff201000
+      | 
+In file included from main.c:6:
+address_map_nios2.h:44: warning: "AV_CONFIG_BASE" redefined
+   44 | #define AV_CONFIG_BASE   0xFF203000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:64: note: this is the location of the previous definition
+   64 | #define AV_CONFIG_BASE 0xff203000
+      | 
+main.c: In function 'main':
+main.c:48:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   48 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:47:18: warning: unused variable 'output' [-Wunused-variable]
+   47 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:46:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   46 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:45:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   45 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:44:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   44 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:38:9: warning: unused variable 'counter' [-Wunused-variable]
+   38 |     int counter = 0;
+      |         ^~~~~~~
+main.c:37:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   37 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c:36:19: warning: unused variable 'sdram_ptr' [-Wunused-variable]
+   36 |     volatile int *sdram_ptr = (int *)SDRAM_BASE;
+      |                   ^~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:189:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  189 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 102 KBytes program size (code + initialized data).
+Info:           130962 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+10:21:49 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+10:21:51 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+11:03:18 **** Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+In file included from main.c:7:
+address_map_nios2.h:30: warning: "HEX3_HEX0_BASE" redefined
+   30 | #define HEX3_HEX0_BASE   0xFF200020
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:291: note: this is the location of the previous definition
+  291 | #define HEX3_HEX0_BASE 0xff200020
+      | 
+In file included from main.c:7:
+address_map_nios2.h:31: warning: "HEX7_HEX4_BASE" redefined
+   31 | #define HEX7_HEX4_BASE   0xFF200030
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:318: note: this is the location of the previous definition
+  318 | #define HEX7_HEX4_BASE 0xff200030
+      | 
+In file included from main.c:7:
+address_map_nios2.h:39: warning: "JTAG_UART_BASE" redefined
+   39 | #define JTAG_UART_BASE   0xFF201000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:397: note: this is the location of the previous definition
+  397 | #define JTAG_UART_BASE 0xff201000
+      | 
+In file included from main.c:7:
+address_map_nios2.h:44: warning: "AV_CONFIG_BASE" redefined
+   44 | #define AV_CONFIG_BASE   0xFF203000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:64: note: this is the location of the previous definition
+   64 | #define AV_CONFIG_BASE 0xff203000
+      | 
+main.c: In function 'main':
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:190:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  190 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 104 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+11:03:20 **** Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+11:03:25 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+11:04:33 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+In file included from main.c:7:
+address_map_nios2.h:30: warning: "HEX3_HEX0_BASE" redefined
+   30 | #define HEX3_HEX0_BASE   0xFF200020
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:291: note: this is the location of the previous definition
+  291 | #define HEX3_HEX0_BASE 0xff200020
+      | 
+In file included from main.c:7:
+address_map_nios2.h:31: warning: "HEX7_HEX4_BASE" redefined
+   31 | #define HEX7_HEX4_BASE   0xFF200030
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:318: note: this is the location of the previous definition
+  318 | #define HEX7_HEX4_BASE 0xff200030
+      | 
+In file included from main.c:7:
+address_map_nios2.h:39: warning: "JTAG_UART_BASE" redefined
+   39 | #define JTAG_UART_BASE   0xFF201000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:397: note: this is the location of the previous definition
+  397 | #define JTAG_UART_BASE 0xff201000
+      | 
+In file included from main.c:7:
+address_map_nios2.h:44: warning: "AV_CONFIG_BASE" redefined
+   44 | #define AV_CONFIG_BASE   0xFF203000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:64: note: this is the location of the previous definition
+   64 | #define AV_CONFIG_BASE 0xff203000
+      | 
+main.c: In function 'main':
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:191:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  191 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 104 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+11:04:35 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+11:04:41 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+11:06:43 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+In file included from main.c:7:
+address_map_nios2.h:30: warning: "HEX3_HEX0_BASE" redefined
+   30 | #define HEX3_HEX0_BASE   0xFF200020
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:291: note: this is the location of the previous definition
+  291 | #define HEX3_HEX0_BASE 0xff200020
+      | 
+In file included from main.c:7:
+address_map_nios2.h:31: warning: "HEX7_HEX4_BASE" redefined
+   31 | #define HEX7_HEX4_BASE   0xFF200030
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:318: note: this is the location of the previous definition
+  318 | #define HEX7_HEX4_BASE 0xff200030
+      | 
+In file included from main.c:7:
+address_map_nios2.h:39: warning: "JTAG_UART_BASE" redefined
+   39 | #define JTAG_UART_BASE   0xFF201000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:397: note: this is the location of the previous definition
+  397 | #define JTAG_UART_BASE 0xff201000
+      | 
+In file included from main.c:7:
+address_map_nios2.h:44: warning: "AV_CONFIG_BASE" redefined
+   44 | #define AV_CONFIG_BASE   0xFF203000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:64: note: this is the location of the previous definition
+   64 | #define AV_CONFIG_BASE 0xff203000
+      | 
+main.c: In function 'main':
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:187:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  187 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 104 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+11:06:45 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+11:06:48 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+11:08:04 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+In file included from main.c:7:
+address_map_nios2.h:30: warning: "HEX3_HEX0_BASE" redefined
+   30 | #define HEX3_HEX0_BASE   0xFF200020
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:291: note: this is the location of the previous definition
+  291 | #define HEX3_HEX0_BASE 0xff200020
+      | 
+In file included from main.c:7:
+address_map_nios2.h:31: warning: "HEX7_HEX4_BASE" redefined
+   31 | #define HEX7_HEX4_BASE   0xFF200030
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:318: note: this is the location of the previous definition
+  318 | #define HEX7_HEX4_BASE 0xff200030
+      | 
+In file included from main.c:7:
+address_map_nios2.h:39: warning: "JTAG_UART_BASE" redefined
+   39 | #define JTAG_UART_BASE   0xFF201000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:397: note: this is the location of the previous definition
+  397 | #define JTAG_UART_BASE 0xff201000
+      | 
+In file included from main.c:7:
+address_map_nios2.h:44: warning: "AV_CONFIG_BASE" redefined
+   44 | #define AV_CONFIG_BASE   0xFF203000
+      | 
+In file included from main.c:4:
+c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/system.h:64: note: this is the location of the previous definition
+   64 | #define AV_CONFIG_BASE 0xff203000
+      | 
+main.c: In function 'main':
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:187:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  187 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 103 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+11:08:06 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+11:08:13 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+11:25:07 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:187:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  187 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 103 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+11:25:09 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+11:28:48 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:187:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  187 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 103 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+11:28:50 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+11:28:53 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+11:29:47 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:90:8: error: invalid type argument of unary '*' (have 'int')
+   90 |        *sdram_ptr[i] = left_buffer[i];
+      |        ^~~~~~~~~~~~~
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:187:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  187 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Makefile:727: recipe for target 'obj/default/main.o' failed
+make: *** [obj/default/main.o] Error 1
+11:29:48 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+11:30:30 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:187:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  187 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 103 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+11:30:33 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+11:31:45 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:187:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  187 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 103 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+11:31:47 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+11:31:53 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+13:32:57 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:37:31: warning: initialization of 'volatile int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   37 |     volatile int *sdram_ptr = 0x000000FF;
+      |                               ^~~~~~~~~~
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:187:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  187 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 103 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+13:33:00 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+13:33:25 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+13:33:25 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+13:33:38 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+13:34:35 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:187:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  187 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 103 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+13:34:37 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+13:34:41 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+13:35:35 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:187:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  187 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 103 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+13:35:37 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+13:36:26 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:187:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  187 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 103 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+13:36:28 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+13:36:30 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+13:38:59 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:191:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  191 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 104 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+13:39:01 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+13:39:05 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+13:41:55 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:192:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  192 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 104 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+13:41:57 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+13:41:59 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+13:44:17 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:193:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  193 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 104 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+13:44:19 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+13:44:24 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+13:48:35 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:101:25: error: invalid operands to binary * (have 'int *' and 'volatile int *')
+   99 |       *sdram_ptr = ((int *)SDRAM_BASE+0x000000FF)
+      |                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                      |
+      |                                      int *
+  100 |                         //0x7ff443c
+  101 |                         *(red_LED_ptr) = 0x4;
+      |                         ^
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+Makefile:727: recipe for target 'obj/default/main.o' failed
+main.c: In function 'calculate_mfcc':
+main.c:193:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  193 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+make: *** [obj/default/main.o] Error 1
+13:48:36 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+13:49:37 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:99:18: warning: assignment to 'int' from 'int *' makes integer from pointer without a cast [-Wint-conversion]
+   99 |       *sdram_ptr = ((int *)SDRAM_BASE+0x000000FF);
+      |                  ^
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:193:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  193 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 104 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+13:49:41 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+13:49:48 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+13:51:02 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:99:18: warning: assignment to 'int' from 'int *' makes integer from pointer without a cast [-Wint-conversion]
+   99 |       *sdram_ptr = ((int *)SDRAM_BASE+0x000000FF);
+      |                  ^
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:193:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  193 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 104 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+13:51:04 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+13:51:07 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+13:51:47 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:100:18: warning: assignment to 'int' from 'int *' makes integer from pointer without a cast [-Wint-conversion]
+  100 |       *sdram_ptr = ((int *)SDRAM_BASE+0x000000FF);
+      |                  ^
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:194:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  194 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 104 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+13:51:49 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+13:51:51 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+13:53:34 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:100:20: warning: assignment to 'int' from 'int *' makes integer from pointer without a cast [-Wint-conversion]
+  100 |       *(sdram_ptr) = ((int *)SDRAM_BASE+0x000000FF);
+      |                    ^
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:194:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  194 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 104 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+13:53:36 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+13:53:54 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:194:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  194 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 104 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+13:53:56 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+13:54:00 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]
+13:58:41 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:100:18: error: lvalue required as left operand of assignment
+  100 |       &sdram_ptr = (SDRAM_BASE+0x0000FFFF);
+      |                  ^
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:194:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  194 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Makefile:727: recipe for target 'obj/default/main.o' failed
+make: *** [obj/default/main.o] Error 1
+13:58:42 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+13:59:16 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:100:20: error: lvalue required as unary '&' operand
+  100 |       *sdram_ptr = &(SDRAM_BASE+0x0000FFFF);
+      |                    ^
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:194:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  194 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Makefile:727: recipe for target 'obj/default/main.o' failed
+make: *** [obj/default/main.o] Error 1
+13:59:17 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+13:59:36 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:100:18: warning: value computed is not used [-Wunused-value]
+  100 |       *sdram_ptr & (SDRAM_BASE+0x0000FFFF);
+      |       ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:194:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  194 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 104 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+13:59:39 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+14:00:50 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:100:17: warning: assignment to 'volatile int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+  100 |       sdram_ptr = (SDRAM_BASE+0x0000FFFF);
+      |                 ^
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:194:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  194 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 104 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+14:00:52 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+14:01:16 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:100:49: error: expected ';' before ')' token
+  100 |       sdram_ptr = ((int *)SDRAM_BASE+0x0000FFFF));
+      |                                                 ^
+      |                                                 ;
+main.c:100:49: error: expected statement before ')' token
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:194:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  194 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+make: *** [obj/default/main.o] Error 1
+Makefile:727: recipe for target 'obj/default/main.o' failed
+14:01:17 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+14:01:35 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc.exe -xc -MP -MMD -c -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//HAL/inc -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/ -Ic:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o "obj/default/main.o" "main.c"
+main.c: In function 'main':
+main.c:49:11: warning: unused variable 'mfcc_buffer' [-Wunused-variable]
+   49 |     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+      |           ^~~~~~~~~~~
+main.c:48:18: warning: unused variable 'output' [-Wunused-variable]
+   48 |     kiss_fft_cpx output[FFT_SIZE];
+      |                  ^~~~~~
+main.c:47:11: warning: unused variable 'windowed_buffer' [-Wunused-variable]
+   47 |     float windowed_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~
+main.c:46:11: warning: unused variable 'normalized_buffer' [-Wunused-variable]
+   46 |     float normalized_buffer[BUF_SIZE];
+      |           ^~~~~~~~~~~~~~~~~
+main.c:45:9: warning: variable 'right_buffer' set but not used [-Wunused-but-set-variable]
+   45 |     int right_buffer[BUF_SIZE];
+      |         ^~~~~~~~~~~~
+main.c:39:9: warning: unused variable 'counter' [-Wunused-variable]
+   39 |     int counter = 0;
+      |         ^~~~~~~
+main.c:38:9: warning: unused variable 'sdram_count' [-Wunused-variable]
+   38 |     int sdram_count = 0;
+      |         ^~~~~~~~~~~
+main.c: In function 'calculate_mfcc':
+main.c:194:11: warning: unused variable 'windowed_frame' [-Wunused-variable]
+  194 |     float windowed_frame[FFT_SIZE];
+      |           ^~~~~~~~~~~~~~
+Info: Linking rps.elf
+nios2-elf-g++.exe  -T'c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//linker.x' -msys-crt0='c:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -Lc:/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/  -mcustom-fpu-cfg=60-2  -Wl,-Map=rps.map   -O0 -g -Wall   -mno-hw-div -mcustom-fpu-cfg=60-2 -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o rps.elf obj/default/fft/kiss_fft.o obj/default/main.o obj/default/mfcc/libmfcc.o -lm -msys-lib=m
+nios2-elf-insert.exe rps.elf --thread_model hal --cpu_name Nios2 --qsys true --simulation_enabled false --id 0 --sidp 0xff202040 --timestamp 1718028883 --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name Computer_System --quartus_project_dir "c:/school/Jaar-3/Periode-4/FPGA/FPGA-project" --sopcinfo C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
+Info: (rps.elf) 104 KBytes program size (code + initialized data).
+Info:           130960 KBytes free for stack + heap.
+Info: Creating rps.objdump
+nios2-elf-objdump.exe --disassemble --syms --all-header --source rps.elf >rps.objdump
+[rps build complete]
+14:01:38 **** Incremental Build of configuration Nios II for project rps_bsp ****
+wsl make all 
+[BSP build complete]
+14:01:45 **** Incremental Build of configuration Nios II for project rps ****
+wsl make all 
+Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
+[BSP build complete]
+[rps build complete]

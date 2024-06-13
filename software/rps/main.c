@@ -1,6 +1,8 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+//#include "system.h"
+#include "sys/alt_stdio.h"
 
 #include "address_map_nios2.h"
 #include "fft/kiss_fft.h"
@@ -32,6 +34,9 @@ int main(void) {
        instead of regular memory loads and stores) */
     volatile int *red_LED_ptr = (int *)LED_BASE;
     volatile int *audio_ptr = (int *)AUDIO_BASE;
+    volatile int *sdram_ptr = ((int *)SDRAM_BASE+0x0000FFFF);
+    int sdram_count = 0;
+    int counter = 0;
 
     /* used for audio record/playback */
     int fifospace;
@@ -46,7 +51,7 @@ int main(void) {
     /* read and echo audio data */
     record = 0;
     play = 0;
-
+    int i;
     while (1) {
         check_KEYs(&record, &play, &buffer_index);
         if (record) {
@@ -65,7 +70,11 @@ int main(void) {
                         // done recording
                         record = 0;
                         *(red_LED_ptr) = 0x0;  // turn off LEDR
-                        normalize_audio(left_buffer, normalized_buffer, BUF_SIZE);
+                        for (int i = 6000; i < 6600; i++) {
+                        	printf("%d\n", left_buffer[i]);
+                        }
+                        //printf("Address of left_buffer: %p\n", (void*)&left_buffer);
+                        /*normalize_audio(left_buffer, normalized_buffer, BUF_SIZE);
                         // Calculate MFCCs
 						calculate_mfcc(normalized_buffer, BUF_SIZE, mfcc_buffer);
                         *(red_LED_ptr) = 0x8;
@@ -76,7 +85,25 @@ int main(void) {
 								printf("%f ", mfcc_buffer[frame * NUM_MFCC + m]);
 							}
 							printf("\n");
+						}*/
+                         //write the int buffer to the SDRAM
+
+                        *(red_LED_ptr) = 0x2;
+						for (i = 0; i < BUF_SIZE; i++) {
+							*sdram_ptr++ = i;
+									//left_buffer[i];
+							//sdram_count++;
+							printf("test\n");
 						}
+						printf("\n");
+						*(red_LED_ptr) = 0x4;
+						sdram_ptr = ((int *)SDRAM_BASE+0x0000FFFF);
+                        //0x7ff443c
+
+                        for (i = 6000; i < 6600; i++) {
+                        	int sample = *sdram_ptr++;
+                        	printf("Sample: %d\n", sample);
+                        }
                         // Reset buffer_index for the next recording
                         buffer_index = 0;
                     }
@@ -180,7 +207,7 @@ void calculate_mfcc(float *input_buffer, int signal_length, float *mfcc_buffer) 
         kiss_fft_cpx fft_output[FFT_SIZE];
         fft(frame, fft_output);
 
-        printf("cycle %d spectrum", frame_num + 1);
+        alt_printf("cycle %d spectrum", frame_num + 1);
 
         // Compute the magnitude spectrum of the current frame.
         double magnitude_spectrum[FFT_SIZE];
