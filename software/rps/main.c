@@ -1,12 +1,10 @@
 #include <math.h>
-#include <stdio.h>
 #include <stdlib.h>
-//#include "system.h"
-#include "sys/alt_stdio.h"
 
 #include "address_map_nios2.h"
 #include "fft/kiss_fft.h"
 #include "mfcc/libmfcc.h"
+#include "altera_up_avalon_character_lcd.h";
 
 /* globals */
 #define BUF_SIZE 12000    // about 1.5 seconds of buffer (@ 8K samples/sec)
@@ -17,16 +15,22 @@
 #define NUM_MFCC 13
 #define NUM_FILTERS 12
 
+alt_up_character_lcd_dev * char_lcd_dev;
+
 /* function prototypes */
 void check_KEYs(int *, int *, int *);
 void normalize_audio(float *, float *, int);
+void hamming_window(float *input, float *output, int size);
 void fft(float *input_buffer, kiss_fft_cpx *output_buffer);
 void calculate_mfcc(float *input_buffer, int signal_length, float *mfcc_buffer);
+void clearLCD();
+void writeToLCD(char* first_row, char* second_row);
 
 /*******************************************************************************
  * This program performs the following:
  *  1. records audio for 1.5 seconds when KEY[0] is pressed.
- *  2. Normalizes
+ *  2. Normalizes the audio to a range between -1 and 1.
+ *  3. Applies the Hamming window to the samples.
  ******************************************************************************/
 int main(void) {
     /* Declare volatile pointers to I/O registers (volatile means that IO load
@@ -34,22 +38,29 @@ int main(void) {
        instead of regular memory loads and stores) */
     volatile int *red_LED_ptr = (int *)LED_BASE;
     volatile int *audio_ptr = (int *)AUDIO_BASE;
-    volatile int *sdram_ptr = ((int *)SDRAM_BASE+0x0000FFFF);
     int sdram_count = 0;
     int counter = 0;
 
-    /* used for audio record/playback */
+    /* used for audio record and calculations */
     int fifospace;
     int record = 0, play = 0, buffer_index = 0;
-    int left_buffer[BUF_SIZE];
+    float left_buffer[BUF_SIZE];
     int right_buffer[BUF_SIZE];
     float normalized_buffer[BUF_SIZE];
-    float windowed_buffer[BUF_SIZE];
-    kiss_fft_cpx output[FFT_SIZE];
+    //kiss_fft_cpx output[FFT_SIZE];
     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+    // open the Character LCD port
+    char_lcd_dev = alt_up_character_lcd_open_dev ("/dev/Char_LCD_16x2");
+    if ( char_lcd_dev == NULL) alt_printf ("Error: could not open character LCD device\n");
+    else alt_printf ("Opened character LCD device\n");
+    /* Initialize the character display */
+    alt_up_character_lcd_init (char_lcd_dev);
+    /* Write "Welcome to" in the first row */
+    alt_up_character_lcd_string(char_lcd_dev, "Press KEY0 to");
+    alt_up_character_lcd_set_cursor_pos(char_lcd_dev, 0, 1);
+	alt_up_character_lcd_string(char_lcd_dev, "Record audio...");
 
     /* read and echo audio data */
-    record = 0;
     play = 0;
     int i;
     while (1) {
@@ -70,14 +81,16 @@ int main(void) {
                         // done recording
                         record = 0;
                         *(red_LED_ptr) = 0x0;  // turn off LEDR
-                        for (int i = 6000; i < 6600; i++) {
-                        	printf("%d\n", left_buffer[i]);
-                        }
                         //printf("Address of left_buffer: %p\n", (void*)&left_buffer);
-                        /*normalize_audio(left_buffer, normalized_buffer, BUF_SIZE);
+                        clearLCD();
+                        alt_up_character_lcd_set_cursor_pos(char_lcd_dev, 0, 0);
+                        alt_up_character_lcd_string(char_lcd_dev, "Normalizing     \0");
+                        alt_up_character_lcd_set_cursor_pos(char_lcd_dev, 0, 1);
+						alt_up_character_lcd_string(char_lcd_dev, "audio...        \0");
+                        normalize_audio(left_buffer, normalized_buffer, BUF_SIZE);
                         // Calculate MFCCs
 						calculate_mfcc(normalized_buffer, BUF_SIZE, mfcc_buffer);
-                        *(red_LED_ptr) = 0x8;
+						writeToLCD("Finished        \0", "calculations...\0");
 						int num_frames = (BUF_SIZE - FFT_SIZE) / FFT_SHIFT + 1;
 						for (int frame = 0; frame < num_frames; frame++) {
 							printf("Frame %d:\n", frame);
@@ -85,26 +98,9 @@ int main(void) {
 								printf("%f ", mfcc_buffer[frame * NUM_MFCC + m]);
 							}
 							printf("\n");
-						}*/
-                         //write the int buffer to the SDRAM
-
-                        *(red_LED_ptr) = 0x2;
-						for (i = 0; i < BUF_SIZE; i++) {
-							*sdram_ptr++ = i;
-									//left_buffer[i];
-							//sdram_count++;
-							printf("test\n");
 						}
-						printf("\n");
-						*(red_LED_ptr) = 0x4;
-						sdram_ptr = ((int *)SDRAM_BASE+0x0000FFFF);
-                        //0x7ff443c
+                         //write the float buffer to the SDRAM
 
-                        for (i = 6000; i < 6600; i++) {
-                        	int sample = *sdram_ptr++;
-                        	printf("Sample: %d\n", sample);
-                        }
-                        // Reset buffer_index for the next recording
                         buffer_index = 0;
                     }
                     fifospace = *(audio_ptr + 1);  // read the audio port fifospace register
@@ -164,10 +160,20 @@ void normalize_audio(float *input_buffer, float *output_buffer, int size) {
 		max_val = 1.0f;  // To avoid division by zero
 	}
 
-	// Normalize the input buffer to the range [-1, 1]
+	// Normalize the input buffer to numbers between -1 and 1.
 	for (int i = 0; i < size; i++) {
 		output_buffer[i] = (input_buffer[i] - 32768.0f) / max_val;
 	}
+}
+
+// Source for this function: https://www.sciencedirect.com/topics/engineering/hamming-window.
+void hamming_window(float *input, float *output, int size) {
+    for (int i = 0; i < size; i++) {
+        float alpha = 0.54f;
+        float beta = 0.46f;
+        float window = alpha - beta * cosf((2 * PI * i) / (size - 1));
+        output[i] = input[i] * window;
+    }
 }
 
 void fft(float *input_buffer, kiss_fft_cpx *output_buffer) {
@@ -198,28 +204,40 @@ void calculate_mfcc(float *input_buffer, int signal_length, float *mfcc_buffer) 
     for (int frame_num = 0; frame_num < num_frames; frame_num++) {
         // Extract FFT_SIZE samples from the start of the current frame.
         memcpy(frame, input_buffer + frame_num * FFT_SHIFT, sizeof(float) * FFT_SIZE);
-        printf("cycle %d fft", frame_num + 1);
 
-        // Apply the Hamming Window to the current frame.
-        //hamming_window(frame, windowed_frame, FFT_SIZE);
+        writeToLCD("Hamming         \0", "window...       \0");
+        hamming_window(frame, windowed_frame, FFT_SIZE);
 
-        // Calculate the FFT of the current frame.
+        writeToLCD("Performing      \0", "FFT...          \0");
         kiss_fft_cpx fft_output[FFT_SIZE];
-        fft(frame, fft_output);
+        fft(windowed_frame, fft_output);
 
-        alt_printf("cycle %d spectrum", frame_num + 1);
-
+        writeToLCD("Magnitude       \0", "spectrum...     \0");
         // Compute the magnitude spectrum of the current frame.
         double magnitude_spectrum[FFT_SIZE];
         for (int i = 0; i < FFT_SIZE; i++) {
             magnitude_spectrum[i] = sqrt(fft_output[i].r * fft_output[i].r + fft_output[i].i * fft_output[i].i);
         }
 
-        printf("cycle %d mfcc", frame_num + 1);
-
+        writeToLCD("Calculating     \0", "MFCCs...        \0");
         // Calculate MFCCs for the current frame.
         for (int m = 0; m < NUM_MFCC; m++) {
             mfcc_buffer[frame_num * NUM_MFCC + m] = GetCoefficient(magnitude_spectrum, 8192, NUM_FILTERS, FFT_SIZE, m);
         }
     }
+}
+
+void clearLCD() {
+	for (int i = 0; i < 16; i++) {
+		alt_up_character_lcd_erase_pos(char_lcd_dev, i, 0);
+		alt_up_character_lcd_erase_pos(char_lcd_dev, i, 1);
+	}
+}
+
+void writeToLCD(char* first_row, char* second_row) {
+	clearLCD();
+	alt_up_character_lcd_set_cursor_pos(char_lcd_dev, 0, 0);
+	alt_up_character_lcd_string(char_lcd_dev, first_row);
+	alt_up_character_lcd_set_cursor_pos(char_lcd_dev, 0, 1);
+	alt_up_character_lcd_string(char_lcd_dev, second_row);
 }

@@ -1,4 +1,3 @@
-
 module rockpaperscissors (
 	// Clock pins
 	CLOCK_50,
@@ -165,16 +164,6 @@ input			[17: 0]	SW;
 input						UART_RXD;
 output					UART_TXD;
 
-
-input wire clk,            // Clock input
-input wire reset_n,        // Reset input
-input wire [31:0] fft_address,   // Address for FFT
-input wire fft_write,      // Write control for FFT
-input wire fft_read,       // Read control for FFT
-input wire [31:0] fft_writedata, // Data to be written to FFT
-output wire [31:0] fft_readdata,  // Data read from FFT
-output wire fft_waitrequest      // Wait request from FFT
-
 /*****************************************************************************
  *                 Internal Wires and Registers Declarations                 *
  *****************************************************************************/
@@ -291,17 +280,4 @@ Computer_System The_System (
 	.sram_WE_N									(SRAM_WE_N)
 );
 
-// FFT
-fft_avalon fft_interface (
-    .clk(clk),
-    .reset_n(reset_n),
-    .address(fft_address),
-    .write(fft_write),
-    .read(fft_read),
-    .writedata(fft_writedata),
-    .readdata(fft_readdata),
-    .waitrequest(fft_waitrequest)
-);
-
 endmodule
-
