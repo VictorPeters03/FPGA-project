@@ -27,6 +27,10 @@
 		.hex7_hex4_export           (<connected-to-hex7_hex4_export>),           //            hex7_hex4.export
 		.pushbuttons_export         (<connected-to-pushbuttons_export>),         //          pushbuttons.export
 		.red_leds_export            (<connected-to-red_leds_export>),            //             red_leds.export
+		.sd_card_b_SD_cmd           (<connected-to-sd_card_b_SD_cmd>),           //              sd_card.b_SD_cmd
+		.sd_card_b_SD_dat           (<connected-to-sd_card_b_SD_dat>),           //                     .b_SD_dat
+		.sd_card_b_SD_dat3          (<connected-to-sd_card_b_SD_dat3>),          //                     .b_SD_dat3
+		.sd_card_o_SD_clock         (<connected-to-sd_card_o_SD_clock>),         //                     .o_SD_clock
 		.sdram_ba                   (<connected-to-sdram_ba>),                   //                sdram.ba
 		.sdram_addr                 (<connected-to-sdram_addr>),                 //                     .addr
 		.sdram_cas_n                (<connected-to-sdram_cas_n>),                //                     .cas_n

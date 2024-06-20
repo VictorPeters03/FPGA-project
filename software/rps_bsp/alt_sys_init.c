@@ -4,7 +4,7 @@
  * Machine generated for CPU 'Nios2' in SOPC Builder design 'Computer_System'
  * SOPC Builder design path: C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
  *
- * Generated: Mon Jun 10 16:07:49 CEST 2024
+ * Generated: Thu Jun 20 10:24:14 CEST 2024
  */
 
 /*
@@ -59,6 +59,7 @@
  */
 
 #include "altera_nios2_gen2_irq.h"
+#include "Altera_UP_SD_Card_Avalon_Interface.h"
 #include "altera_avalon_jtag_uart.h"
 #include "altera_avalon_sysid_qsys.h"
 #include "altera_avalon_timer.h"
@@ -80,6 +81,7 @@ ALTERA_UP_AVALON_AUDIO_AND_VIDEO_CONFIG_INSTANCE ( AV_CONFIG, AV_Config);
 ALTERA_UP_AVALON_AUDIO_INSTANCE ( AUDIO_SUBSYSTEM_AUDIO, Audio_Subsystem_Audio);
 ALTERA_UP_AVALON_CHARACTER_LCD_INSTANCE ( CHAR_LCD_16X2, Char_LCD_16x2);
 ALTERA_UP_AVALON_RS232_INSTANCE ( SERIAL_PORT, Serial_Port);
+ALTERA_UP_SD_CARD_AVALON_INTERFACE_INSTANCE ( SD_CARD, SD_Card);
 
 /*
  * Initialize the interrupt controller devices
@@ -110,4 +112,5 @@ void alt_sys_init( void )
     ALTERA_UP_AVALON_AUDIO_INIT ( AUDIO_SUBSYSTEM_AUDIO, Audio_Subsystem_Audio);
     ALTERA_UP_AVALON_CHARACTER_LCD_INIT ( CHAR_LCD_16X2, Char_LCD_16x2);
     ALTERA_UP_AVALON_RS232_INIT ( SERIAL_PORT, Serial_Port);
+    ALTERA_UP_SD_CARD_AVALON_INTERFACE_INIT ( SD_CARD, SD_Card);
 }

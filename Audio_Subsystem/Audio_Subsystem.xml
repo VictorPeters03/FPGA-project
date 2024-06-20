@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2024.05.24.13:58:21"
+ date="2024.06.19.13:31:28"
  outputDirectory="C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Audio_Subsystem/">
  <perimeter>
   <parameter
@@ -179,7 +179,7 @@
        width="32" />
   </interface>
   <interface name="sys_clk" kind="clock" start="0">
-   <property name="clockRate" value="50000000" />
+   <property name="clockRate" value="0" />
    <property name="externallyDriven" value="false" />
    <property name="ptfSchematicName" value="" />
    <port name="sys_clk_clk" direction="input" role="clk" width="1" />
@@ -192,14 +192,14 @@
  </perimeter>
  <entity
    path=""
-   parameterizationKey="Audio_Subsystem:1.0:AUTO_AUDIO_PLL_REF_CLK_CLOCK_DOMAIN=-1,AUTO_AUDIO_PLL_REF_CLK_CLOCK_RATE=-1,AUTO_AUDIO_PLL_REF_CLK_RESET_DOMAIN=-1,AUTO_DEVICE=EP4CE115F29C7,AUTO_DEVICE_FAMILY=Cyclone IV E,AUTO_DEVICE_SPEEDGRADE=7,AUTO_GENERATION_ID=1716551897,AUTO_SYS_CLK_CLOCK_DOMAIN=-1,AUTO_SYS_CLK_CLOCK_RATE=-1,AUTO_SYS_CLK_RESET_DOMAIN=-1,AUTO_UNIQUE_ID=(altera_up_avalon_audio:18.0:AUTO_CLK_CLOCK_RATE=50000000,AUTO_DEVICE_FAMILY=Cyclone IV E,audio_in=true,audio_out=true,avalon_bus_type=Memory Mapped,dw=16)(altera_up_avalon_audio_pll:18.0:AUTO_DEVICE=EP4CE115F29C7,AUTO_DEVICE_SPEEDGRADE=7,audio_clk_freq=12.288,device_family=Cyclone IV E,gui_refclk=50.0,refclk=50.0(altera_up_altpll:18.0:DEVICE_FAMILY=Cyclone IV,OUTCLK0_DIV=297,OUTCLK0_MULT=73,OUTCLK1_DIV=1,OUTCLK1_MULT=1,OUTCLK2_DIV=1,OUTCLK2_MULT=1,PHASE_SHIFT=0,audio_clk_freq=12.288,gui_device_family=Cyclone IV E,type=Audio,video_in=5MP Digital Camera (THDB_D5M),video_out=4.3&quot; LCD (TRDB_LTM))(altera_up_avalon_reset_from_locked_signal:18.0:)(conduit:21.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0))(clock_source:21.1:clockFrequency=50000000,clockFrequencyKnown=true,inputClockFrequency=0,resetSynchronousEdges=NONE)(clock:21.1:)(reset:21.1:)"
+   parameterizationKey="Audio_Subsystem:1.0:AUTO_AUDIO_PLL_REF_CLK_CLOCK_DOMAIN=-1,AUTO_AUDIO_PLL_REF_CLK_CLOCK_RATE=-1,AUTO_AUDIO_PLL_REF_CLK_RESET_DOMAIN=-1,AUTO_DEVICE=EP4CE115F29C7,AUTO_DEVICE_FAMILY=Cyclone IV E,AUTO_DEVICE_SPEEDGRADE=7,AUTO_GENERATION_ID=1718796684,AUTO_SYS_CLK_CLOCK_DOMAIN=-1,AUTO_SYS_CLK_CLOCK_RATE=-1,AUTO_SYS_CLK_RESET_DOMAIN=-1,AUTO_UNIQUE_ID=(altera_up_avalon_audio:18.0:AUTO_CLK_CLOCK_RATE=0,AUTO_DEVICE_FAMILY=Cyclone IV E,audio_in=true,audio_out=true,avalon_bus_type=Memory Mapped,dw=16)(altera_up_avalon_audio_pll:18.0:AUTO_DEVICE=EP4CE115F29C7,AUTO_DEVICE_SPEEDGRADE=7,audio_clk_freq=12.288,device_family=Cyclone IV E,gui_refclk=50.0,refclk=50.0(altera_up_altpll:18.0:DEVICE_FAMILY=Cyclone IV,OUTCLK0_DIV=297,OUTCLK0_MULT=73,OUTCLK1_DIV=1,OUTCLK1_MULT=1,OUTCLK2_DIV=1,OUTCLK2_MULT=1,PHASE_SHIFT=0,audio_clk_freq=12.288,gui_device_family=Cyclone IV E,type=Audio,video_in=5MP Digital Camera (THDB_D5M),video_out=4.3&quot; LCD (TRDB_LTM))(altera_up_avalon_reset_from_locked_signal:18.0:)(conduit:21.1:endPort=,endPortLSB=0,startPort=,startPortLSB=0,width=0))(clock_source:21.1:clockFrequency=50000000,clockFrequencyKnown=false,inputClockFrequency=0,resetSynchronousEdges=NONE)(clock:21.1:)(reset:21.1:)"
    instancePathKey="Audio_Subsystem"
    kind="Audio_Subsystem"
    version="1.0"
    name="Audio_Subsystem">
   <parameter name="AUTO_SYS_CLK_RESET_DOMAIN" value="-1" />
   <parameter name="AUTO_AUDIO_PLL_REF_CLK_RESET_DOMAIN" value="-1" />
-  <parameter name="AUTO_GENERATION_ID" value="1716551897" />
+  <parameter name="AUTO_GENERATION_ID" value="1718796684" />
   <parameter name="AUTO_DEVICE" value="EP4CE115F29C7" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
   <parameter name="AUTO_AUDIO_PLL_REF_CLK_CLOCK_DOMAIN" value="-1" />
@@ -287,6 +287,7 @@
    <message level="Progress" culprit="min"></message>
    <message level="Progress" culprit="max"></message>
    <message level="Progress" culprit="current"></message>
+   <message level="Progress" culprit="current"></message>
    <message level="Debug">Transform: CustomInstructionTransform</message>
    <message level="Debug">No custom instruction connections, skipping transform </message>
    <message level="Debug" culprit="merlin_custom_instruction_transform"><![CDATA[After transform: <b>3</b> modules, <b>2</b> connections]]></message>
@@ -299,6 +300,7 @@
    <message level="Progress" culprit="min"></message>
    <message level="Progress" culprit="max"></message>
    <message level="Progress" culprit="current"></message>
+   <message level="Progress" culprit="current"></message>
    <message level="Debug" culprit="reset_adaptation_transform"><![CDATA[After transform: <b>4</b> modules, <b>4</b> connections]]></message>
    <message level="Debug" culprit="Audio_Subsystem"><![CDATA["<b>Audio_Subsystem</b>" reuses <b>altera_up_avalon_audio</b> "<b>submodules/Audio_Subsystem_Audio</b>"]]></message>
    <message level="Debug" culprit="Audio_Subsystem"><![CDATA["<b>Audio_Subsystem</b>" reuses <b>altera_up_avalon_audio_pll</b> "<b>submodules/Audio_Subsystem_Audio_PLL</b>"]]></message>
@@ -309,6 +311,7 @@
    <message level="Debug" culprit="Audio_Subsystem">queue size: 1 starting:altera_up_avalon_audio_pll "submodules/Audio_Subsystem_Audio_PLL"</message>
    <message level="Progress" culprit="min"></message>
    <message level="Progress" culprit="max"></message>
+   <message level="Progress" culprit="current"></message>
    <message level="Progress" culprit="current"></message>
    <message level="Debug">Transform: CustomInstructionTransform</message>
    <message level="Debug">No custom instruction connections, skipping transform </message>
@@ -332,12 +335,12 @@
  </entity>
  <entity
    path="submodules/"
-   parameterizationKey="altera_up_avalon_audio:18.0:AUTO_CLK_CLOCK_RATE=50000000,AUTO_DEVICE_FAMILY=Cyclone IV E,audio_in=true,audio_out=true,avalon_bus_type=Memory Mapped,dw=16"
+   parameterizationKey="altera_up_avalon_audio:18.0:AUTO_CLK_CLOCK_RATE=0,AUTO_DEVICE_FAMILY=Cyclone IV E,audio_in=true,audio_out=true,avalon_bus_type=Memory Mapped,dw=16"
    instancePathKey="Audio_Subsystem:.:Audio"
    kind="altera_up_avalon_audio"
    version="18.0"
    name="Audio_Subsystem_Audio">
-  <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="0" />
   <parameter name="dw" value="16" />
   <parameter name="avalon_bus_type" value="Memory Mapped" />
   <parameter name="audio_in" value="true" />
@@ -429,6 +432,7 @@
    <message level="Debug" culprit="Audio_Subsystem">queue size: 1 starting:altera_up_avalon_audio_pll "submodules/Audio_Subsystem_Audio_PLL"</message>
    <message level="Progress" culprit="min"></message>
    <message level="Progress" culprit="max"></message>
+   <message level="Progress" culprit="current"></message>
    <message level="Progress" culprit="current"></message>
    <message level="Debug">Transform: CustomInstructionTransform</message>
    <message level="Debug">No custom instruction connections, skipping transform </message>

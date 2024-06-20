@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>18-jun-2024 12:28:27</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1718706507039</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>20-jun-2024 21:04:34</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1718910274327</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\school\Jaar-3\Periode-4\FPGA\FPGA-project\software\rps_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>C:\school\Jaar-3\Periode-4\FPGA\FPGA-project\Computer_System.sopcinfo</SopcDesignFile>
@@ -908,6 +908,12 @@
                 <slaveDescriptor>SRAM</slaveDescriptor>
                 <addressRange>0x08000000 - 0x081FFFFF</addressRange>
                 <addressSpan>2097152</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>SD_Card</slaveDescriptor>
+                <addressRange>0x0B000000 - 0x0B0003FF</addressRange>
+                <addressSpan>1024</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>

@@ -91,8 +91,8 @@ ELF := rps.elf
 
 # Paths to C, C++, and assembly source files.
 C_SRCS += main.c
-C_SRCS += fft/kiss_fft.c
 C_SRCS += mfcc/libmfcc.c
+C_SRCS += fft/kiss_fft.c
 CXX_SRCS :=
 ASM_SRCS :=
 

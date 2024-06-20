@@ -28,6 +28,10 @@ module Computer_System (
 	hex7_hex4_export,
 	pushbuttons_export,
 	red_leds_export,
+	sd_card_b_SD_cmd,
+	sd_card_b_SD_dat,
+	sd_card_b_SD_dat3,
+	sd_card_o_SD_clock,
 	sdram_ba,
 	sdram_addr,
 	sdram_cas_n,
@@ -79,6 +83,10 @@ module Computer_System (
 	output	[31:0]	hex7_hex4_export;
 	input	[3:0]	pushbuttons_export;
 	output	[17:0]	red_leds_export;
+	inout		sd_card_b_SD_cmd;
+	inout		sd_card_b_SD_dat;
+	inout		sd_card_b_SD_dat3;
+	output		sd_card_o_SD_clock;
 	output	[1:0]	sdram_ba;
 	output	[12:0]	sdram_addr;
 	output		sdram_cas_n;

@@ -10,7 +10,8 @@ obj/default/main.o: main.c address_map_nios2.h fft/kiss_fft.h \
  c:\school\jaar-3\periode-4\fpga\fpga-project\software\rps_bsp\hal\inc\sys\alt_alarm.h \
  c:\school\jaar-3\periode-4\fpga\fpga-project\software\rps_bsp\hal\inc\sys\alt_llist.h \
  c:\school\jaar-3\periode-4\fpga\fpga-project\software\rps_bsp\hal\inc\priv\alt_alarm.h \
- c:\school\jaar-3\periode-4\fpga\fpga-project\software\rps_bsp\hal\inc\sys\alt_warning.h
+ c:\school\jaar-3\periode-4\fpga\fpga-project\software\rps_bsp\hal\inc\sys\alt_warning.h \
+ c:\school\jaar-3\periode-4\fpga\fpga-project\software\rps_bsp\drivers\inc\altera_up_sd_card_avalon_interface.h
 address_map_nios2.h:
 fft/kiss_fft.h:
 mfcc/libmfcc.h:
@@ -25,3 +26,4 @@ c:\school\jaar-3\periode-4\fpga\fpga-project\software\rps_bsp\hal\inc\sys\alt_al
 c:\school\jaar-3\periode-4\fpga\fpga-project\software\rps_bsp\hal\inc\sys\alt_llist.h:
 c:\school\jaar-3\periode-4\fpga\fpga-project\software\rps_bsp\hal\inc\priv\alt_alarm.h:
 c:\school\jaar-3\periode-4\fpga\fpga-project\software\rps_bsp\hal\inc\sys\alt_warning.h:
+c:\school\jaar-3\periode-4\fpga\fpga-project\software\rps_bsp\drivers\inc\altera_up_sd_card_avalon_interface.h:

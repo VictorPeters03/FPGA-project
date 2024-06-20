@@ -4,7 +4,8 @@
 #include "address_map_nios2.h"
 #include "fft/kiss_fft.h"
 #include "mfcc/libmfcc.h"
-#include "altera_up_avalon_character_lcd.h";
+#include "altera_up_avalon_character_lcd.h"
+#include <altera_up_sd_card_avalon_interface.h>
 
 /* globals */
 #define BUF_SIZE 12000    // about 1.5 seconds of buffer (@ 8K samples/sec)
@@ -14,8 +15,12 @@
 #define FFT_SHIFT 512 // Amount of samples the FFT buffer is shifted
 #define NUM_MFCC 13
 #define NUM_FILTERS 12
+#define NUM_FRAMES_MFCC 22;
+#define INFINITY 9999999;
 
 alt_up_character_lcd_dev * char_lcd_dev;
+alt_up_sd_card_dev *sd_card_dev = NULL;
+int connected = 0;
 
 /* function prototypes */
 void check_KEYs(int *, int *, int *);
@@ -23,8 +28,12 @@ void normalize_audio(float *, float *, int);
 void hamming_window(float *input, float *output, int size);
 void fft(float *input_buffer, kiss_fft_cpx *output_buffer);
 void calculate_mfcc(float *input_buffer, int signal_length, float *mfcc_buffer);
+double compare_mfcc_buffers(float *mfcc_buffer_input, float *mfcc_buffer_data);
 void clearLCD();
 void writeToLCD(char* first_row, char* second_row);
+void checkIfSDCardIsPresent();
+bool get_values_from_sd_card_file(char* filename, float *output);
+void list_files_on_sd_card();
 
 /*******************************************************************************
  * This program performs the following:
@@ -49,6 +58,8 @@ int main(void) {
     float normalized_buffer[BUF_SIZE];
     //kiss_fft_cpx output[FFT_SIZE];
     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+    float rock_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+    float paper_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
     // open the Character LCD port
     char_lcd_dev = alt_up_character_lcd_open_dev ("/dev/Char_LCD_16x2");
     if ( char_lcd_dev == NULL) alt_printf ("Error: could not open character LCD device\n");
@@ -59,6 +70,9 @@ int main(void) {
     alt_up_character_lcd_string(char_lcd_dev, "Press KEY0 to");
     alt_up_character_lcd_set_cursor_pos(char_lcd_dev, 0, 1);
 	alt_up_character_lcd_string(char_lcd_dev, "Record audio...");
+	sd_card_dev = alt_up_sd_card_open_dev("/dev/SD_Card");
+	//checkIfSDCardIsPresent();
+	checkIfSDCardIsPresent();
 
     /* read and echo audio data */
     play = 0;
@@ -78,6 +92,7 @@ int main(void) {
                     ++buffer_index;
 
                     if (buffer_index == BUF_SIZE) {
+                    	list_files_on_sd_card();
                         // done recording
                         record = 0;
                         *(red_LED_ptr) = 0x0;  // turn off LEDR
@@ -91,14 +106,34 @@ int main(void) {
                         // Calculate MFCCs
 						calculate_mfcc(normalized_buffer, BUF_SIZE, mfcc_buffer);
 						writeToLCD("Finished        \0", "calculations...\0");
-						int num_frames = (BUF_SIZE - FFT_SIZE) / FFT_SHIFT + 1;
-						for (int frame = 0; frame < num_frames; frame++) {
-							printf("Frame %d:\n", frame);
-							for (int m = 0; m < NUM_MFCC; m++) {
-								printf("%f ", mfcc_buffer[frame * NUM_MFCC + m]);
-							}
-							printf("\n");
+//						int num_frames = (BUF_SIZE - FFT_SIZE) / FFT_SHIFT + 1;
+//						for (int frame = 0; frame < num_frames; frame++) {
+//							printf("Frame %d:\n", frame);
+//							for (int m = 0; m < NUM_MFCC; m++) {
+//								printf("%f ", mfcc_buffer[frame * NUM_MFCC + m]);
+//							}
+//							printf("\n");
+//						}
+						writeToLCD("comparing       \0", "MFCC...        \0");
+						double rock_value;
+						double paper_value;
+						if (get_values_from_sd_card_file("ROCK.TXT", rock_buffer)) {
+							rock_value = compare_mfcc_buffers(mfcc_buffer, rock_buffer);
 						}
+						if (get_values_from_sd_card_file("PAPER.TXT", paper_buffer)) {
+							paper_value = compare_mfcc_buffers(mfcc_buffer, paper_buffer);
+						}
+
+						if (rock_value < paper_value) {
+							writeToLCD("steen           \0", "");
+						}
+						else if (rock_value == paper_value) {
+							writeToLCD("beide           \0", "");
+						}
+						else {
+							writeToLCD("papier          \0", "");
+						}
+						//double rock_value = compare_mfcc_buffers(mfcc_buffer, rock_buffer);
                          //write the float buffer to the SDRAM
 
                         buffer_index = 0;
@@ -227,6 +262,48 @@ void calculate_mfcc(float *input_buffer, int signal_length, float *mfcc_buffer) 
     }
 }
 
+// This function uses dynamic time warping for aligning the best sequences of the MFCC features.
+double compare_mfcc_buffers(float *mfcc_buffer_input, float *mfcc_buffer_data) {
+	int num_frames_mfcc = NUM_FRAMES_MFCC;
+	double distances_frames[num_frames_mfcc + 1][num_frames_mfcc + 1];
+	int i = 0; int j = 0; int k = 0;
+
+	for (i = 0; i < num_frames_mfcc; i++) {
+		for (j = 0; j < num_frames_mfcc; j++) {
+			distances_frames[i][j] = INFINITY;
+		}
+	}
+
+	distances_frames[0][0] = 0;
+
+	// Calculate the distance between all pairs of the MFCC features.
+	for (i = 1; i < num_frames_mfcc; i++) {
+		for (j = 1; j < num_frames_mfcc; j++) {
+			distances_frames[i + 1][j + 1] = 0;
+			for (k = 0; k < NUM_MFCC; k++) {
+				distances_frames[i + 1][j + 1] += pow(mfcc_buffer_input[i * NUM_MFCC + k] - mfcc_buffer_data[j * NUM_MFCC + k], 2);
+			}
+			distances_frames[i + 1][j + 1] = sqrt(distances_frames[i + 1][j + 1]);
+		}
+	}
+
+	// Calculate the shortest distance between from one side to the other in the matrix.
+	for (i = 1; i <= num_frames_mfcc; i++) {
+		for (j = 1; j <= num_frames_mfcc; j++) {
+			double shortest_distance = distances_frames[i - 1][j];
+			if (distances_frames[i - 1][j - 1] < shortest_distance) {
+				shortest_distance = distances_frames[i - 1][j - 1];
+			}
+			if (distances_frames[i][j - 1] < shortest_distance) {
+				shortest_distance = distances_frames[i][j - 1];
+			}
+			distances_frames[i][j] += shortest_distance;
+		}
+	}
+
+	return distances_frames[num_frames_mfcc-1][num_frames_mfcc-1];
+}
+
 void clearLCD() {
 	for (int i = 0; i < 16; i++) {
 		alt_up_character_lcd_erase_pos(char_lcd_dev, i, 0);
@@ -241,3 +318,84 @@ void writeToLCD(char* first_row, char* second_row) {
 	alt_up_character_lcd_set_cursor_pos(char_lcd_dev, 0, 1);
 	alt_up_character_lcd_string(char_lcd_dev, second_row);
 }
+
+void checkIfSDCardIsPresent() {
+	//printf("test");
+	if (sd_card_dev != NULL) {
+		//printf("test");
+		if (connected == 0 && alt_up_sd_card_is_Present()) {
+			printf("SD Card detected\n");
+			if (alt_up_sd_card_is_FAT16()) {
+				printf("FAT16 file system detected\n");
+			}
+			else {
+				printf("unknown file system detected\n");
+			}
+			connected = 1;
+		}
+		else if (connected == 1 && alt_up_sd_card_is_Present() == false) {
+			printf("SD Card is disconnected.\n");
+			connected = 0;
+		}
+	}
+	else {
+		printf("error with sd card.");
+	}
+}
+
+bool get_values_from_sd_card_file(char* filename, float *output) {
+    short int file_handle = alt_up_sd_card_fopen(filename, false);
+    if (file_handle == -1) {
+        printf("Could not open file: %s\n", filename);
+        return false;
+    }
+
+    char buffer[4096];
+    int buffer_index = 0;
+    int byte_read;
+
+    // Read file into buffer
+    while ((byte_read = alt_up_sd_card_read(file_handle)) >= 0) {
+        if (buffer_index < 4096 - 1) {
+            buffer[buffer_index++] = (char) byte_read;
+        } else {
+            printf("Buffer overflow while reading file.\n");
+            alt_up_sd_card_fclose(file_handle);
+            return false;
+        }
+    }
+    buffer[buffer_index] = '\0'; // Null-terminate the buffer
+
+    alt_up_sd_card_fclose(file_handle);
+
+    // Parse buffer contents
+    int output_index = 0;
+    char *token = strtok(buffer, ",");
+    while (token != NULL) {
+        output[output_index++] = strtof(token, NULL);
+        token = strtok(NULL, ",");
+    }
+
+    // Debug: Print the values read
+//    printf("Values read from file %s:\n", filename);
+//    for (int i = 0; i < output_index; i++) {
+//        printf("%f\n", output[i]);
+//    }
+
+    return true;
+}
+
+void list_files_on_sd_card() {
+    char filename[13];  // 8.3 filename format + null terminator
+
+    // List all files in the root directory
+    printf("Files on the SD card:\n");
+    if (alt_up_sd_card_find_first("/dev/SD_Card", filename) == 0) {
+        do {
+            printf("%s\n", filename);
+        } while (alt_up_sd_card_find_next(filename) == 0);
+    } else {
+        printf("No files found on the SD card.\n");
+    }
+}
+

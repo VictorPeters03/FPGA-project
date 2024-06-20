@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;rps/fft&apos; to &apos;kiss_fft&apos;" description="Rename resource &apos;fft&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="fft" name="kiss_fft" stamp="1718795540334" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;rps/kiss_fft&apos; to &apos;fft&apos;" description="Rename resource &apos;kiss_fft&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="kiss_fft" name="fft" stamp="1718795996439" updateReferences="true"/>
+</session>

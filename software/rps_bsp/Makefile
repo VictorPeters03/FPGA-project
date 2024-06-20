@@ -208,6 +208,13 @@ GENERATED_C_LIB_SRCS += alt_sys_init.c
 # used to build each file.
 #-------------------------------------------------------------------------------
 
+# altera_up_sd_card_avalon_interface_driver sources root 
+Altera_UP_SD_Card_Avalon_Interface_driver_SRCS_ROOT := drivers
+
+# altera_up_sd_card_avalon_interface_driver sources 
+Altera_UP_SD_Card_Avalon_Interface_driver_C_LIB_SRCS := \
+	$(Altera_UP_SD_Card_Avalon_Interface_driver_SRCS_ROOT)/src/Altera_UP_SD_Card_Avalon_Interface.c
+
 # avalon_audio_and_video_driver sources root 
 Avalon_Audio_and_Video_driver_SRCS_ROOT := drivers
 
@@ -366,6 +373,7 @@ up_avalon_rs232_driver_C_LIB_SRCS := \
 
 # Assemble all component C source files 
 COMPONENT_C_LIB_SRCS += \
+	$(Altera_UP_SD_Card_Avalon_Interface_driver_C_LIB_SRCS) \
 	$(Avalon_Audio_and_Video_driver_C_LIB_SRCS) \
 	$(Avalon_Audio_driver_C_LIB_SRCS) \
 	$(altera_avalon_jtag_uart_driver_C_LIB_SRCS) \

@@ -4,7 +4,7 @@
  * Machine generated for CPU 'Nios2' in SOPC Builder design 'Computer_System'
  * SOPC Builder design path: C:/school/Jaar-3/Periode-4/FPGA/FPGA-project/Computer_System.sopcinfo
  *
- * Generated: Mon Jun 10 16:07:49 CEST 2024
+ * Generated: Thu Jun 20 10:24:14 CEST 2024
  */
 
 /*
@@ -68,7 +68,7 @@
 #define RESET_REGION_BASE 0x0
 #define RESET_REGION_SPAN 32
 #define SDRAM_REGION_BASE 0x20
-#define SDRAM_REGION_SPAN 134217696
+#define SDRAM_REGION_SPAN 67108832
 
 
 /*

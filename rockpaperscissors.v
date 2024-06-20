@@ -60,6 +60,11 @@ module rockpaperscissors (
 	// LEDs
 	LEDG,
 	LEDR,
+	
+	// SD Card
+	SD_CLK,
+	SD_CMD,
+	SD_DAT,
 
 	// SRAM
 	SRAM_ADDR,
@@ -147,6 +152,11 @@ output					LCD_RW;
 // LEDs
 output		[ 8: 0]	LEDG;
 output		[17: 0]	LEDR;
+
+// SD Card
+output					SD_CLK;
+inout						SD_CMD;
+inout			[ 3: 0]  SD_DAT;
 
 // SRAM
 output		[19: 0]	SRAM_ADDR;
@@ -250,6 +260,12 @@ Computer_System The_System (
 
 	// Red LEDs
 	.red_leds_export							(LEDR),
+	
+	// SD Card
+	.sd_card_b_SD_cmd							(SD_CMD),
+   .sd_card_b_SD_dat							(SD_DAT[0]),
+   .sd_card_b_SD_dat3						(SD_DAT[3]),
+   .sd_card_o_SD_clock						(SD_CLK),
 	
 	// SDRAM
 	.sdram_clk_clk								(DRAM_CLK),
