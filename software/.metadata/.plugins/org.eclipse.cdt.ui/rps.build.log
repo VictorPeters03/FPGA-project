@@ -1,9 +1,9 @@
-21:38:16 **** Incremental Build of configuration Nios II for project rps ****
+13:05:47 **** Incremental Build of configuration Nios II for project rps ****
 wsl make all 
 Info: Building /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
 make --no-print-directory -C /mnt/c/school/Jaar-3/Periode-4/FPGA/FPGA-project/software/rps_bsp/
 [BSP build complete]
 [rps build complete]
 
-21:38:17 Build Finished (took 658ms)
+13:05:48 Build Finished (took 1s.33ms)
 

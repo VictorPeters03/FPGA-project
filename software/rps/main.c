@@ -7,17 +7,24 @@
 #include "altera_up_avalon_character_lcd.h"
 #include <altera_up_sd_card_avalon_interface.h>
 
-/* globals */
+// Global variables
 #define BUF_SIZE 12000    // about 1.5 seconds of buffer (@ 8K samples/sec)
 #define BUF_THRESHOLD 96  // 75% of 128 word buffer
 
-#define FFT_SIZE 1024 // FFT size
-#define FFT_SHIFT 512 // Amount of samples the FFT buffer is shifted
+// FFT buffer size.
+#define FFT_SIZE 1024
+// Amount of samples the FFT buffer is shifted
+#define FFT_SHIFT 512
+// Number of values per MFCC frame.
 #define NUM_MFCC 13
+// Number of Mel filters used in the filter bank for the MFCC calculation.
 #define NUM_FILTERS 12
+// Amount of frames in a MFCC calculation.
 #define NUM_FRAMES_MFCC 22;
+// Not infinity, but still very large.
 #define INFINITY 9999999;
 
+// Instantiations for HAL functions for LCD and SD card.
 alt_up_character_lcd_dev * char_lcd_dev;
 alt_up_sd_card_dev *sd_card_dev = NULL;
 int connected = 0;
@@ -39,7 +46,13 @@ void list_files_on_sd_card();
  * This program performs the following:
  *  1. records audio for 1.5 seconds when KEY[0] is pressed.
  *  2. Normalizes the audio to a range between -1 and 1.
- *  3. Applies the Hamming window to the samples.
+ *  3. Calculates the MFCCs per frame of 1024 samples with an overlap of 512 frames.
+ *  3.1 Applies the Hamming window to the frames.
+ *  3.2 Performs Fast Fourier Transform on the windowed frames.
+ *  3.3 Computes the magnitude spectrum of the fft frames by taking the real and imaginary parts of the output and takes the square root of the numbers to the power of 2.
+ *  3.4 Calculates the Mel Frequency Cepstral Coefficients.
+ *  3.5 Takes the input MFCCs and compares them with MFCCs stored on the sd card for the words rock, paper and scissors.
+ *  3.6 Determines the word that was most likely to have been said.
  ******************************************************************************/
 int main(void) {
     /* Declare volatile pointers to I/O registers (volatile means that IO load
@@ -60,6 +73,7 @@ int main(void) {
     float mfcc_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
     float rock_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
     float paper_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
+    float scissors_buffer[(BUF_SIZE / FFT_SHIFT) * NUM_MFCC];
     // open the Character LCD port
     char_lcd_dev = alt_up_character_lcd_open_dev ("/dev/Char_LCD_16x2");
     if ( char_lcd_dev == NULL) alt_printf ("Error: could not open character LCD device\n");
@@ -71,7 +85,6 @@ int main(void) {
     alt_up_character_lcd_set_cursor_pos(char_lcd_dev, 0, 1);
 	alt_up_character_lcd_string(char_lcd_dev, "Record audio...");
 	sd_card_dev = alt_up_sd_card_open_dev("/dev/SD_Card");
-	//checkIfSDCardIsPresent();
 	checkIfSDCardIsPresent();
 
     /* read and echo audio data */
@@ -96,7 +109,6 @@ int main(void) {
                         // done recording
                         record = 0;
                         *(red_LED_ptr) = 0x0;  // turn off LEDR
-                        //printf("Address of left_buffer: %p\n", (void*)&left_buffer);
                         clearLCD();
                         alt_up_character_lcd_set_cursor_pos(char_lcd_dev, 0, 0);
                         alt_up_character_lcd_string(char_lcd_dev, "Normalizing     \0");
@@ -106,35 +118,42 @@ int main(void) {
                         // Calculate MFCCs
 						calculate_mfcc(normalized_buffer, BUF_SIZE, mfcc_buffer);
 						writeToLCD("Finished        \0", "calculations...\0");
-//						int num_frames = (BUF_SIZE - FFT_SIZE) / FFT_SHIFT + 1;
-//						for (int frame = 0; frame < num_frames; frame++) {
-//							printf("Frame %d:\n", frame);
-//							for (int m = 0; m < NUM_MFCC; m++) {
-//								printf("%f ", mfcc_buffer[frame * NUM_MFCC + m]);
-//							}
-//							printf("\n");
-//						}
+						// Print the calculated MFCCs
+						int num_frames = (BUF_SIZE - FFT_SIZE) / FFT_SHIFT + 1;
+						for (int frame = 0; frame < num_frames; frame++) {
+							printf("Frame %d:\n", frame);
+							for (int m = 0; m < NUM_MFCC; m++) {
+								printf("%f ", mfcc_buffer[frame * NUM_MFCC + m]);
+							}
+							printf("\n");
+						}
 						writeToLCD("comparing       \0", "MFCC...        \0");
 						double rock_value;
 						double paper_value;
+						double scissors_value;
+						// Get the distances from the input buffer to the buffers for the words rock, paper and scissors. The shortest distance is the word that was said.
 						if (get_values_from_sd_card_file("ROCK.TXT", rock_buffer)) {
 							rock_value = compare_mfcc_buffers(mfcc_buffer, rock_buffer);
 						}
+						printf("%f", rock_value);
 						if (get_values_from_sd_card_file("PAPER.TXT", paper_buffer)) {
 							paper_value = compare_mfcc_buffers(mfcc_buffer, paper_buffer);
 						}
-
-						if (rock_value < paper_value) {
+						if (get_values_from_sd_card_file("SCISSORS.TXT", scissors_buffer)) {
+							scissors_value = compare_mfcc_buffers(mfcc_buffer, scissors_buffer);
+						}
+						if (rock_value < paper_value && rock_value < scissors_value) {
 							writeToLCD("steen           \0", "");
 						}
-						else if (rock_value == paper_value) {
-							writeToLCD("beide           \0", "");
-						}
-						else {
+						else if (paper_value < rock_value && paper_value < scissors_value) {
 							writeToLCD("papier          \0", "");
 						}
-						//double rock_value = compare_mfcc_buffers(mfcc_buffer, rock_buffer);
-                         //write the float buffer to the SDRAM
+						else if (scissors_value < rock_value && scissors_value < paper_value) {
+							writeToLCD("schaar          \0", "");
+						}
+						else {
+							writeToLCD("No choice       \0", "");
+						}
 
                         buffer_index = 0;
                     }
@@ -145,9 +164,7 @@ int main(void) {
     }
 }
 
-/****************************************************************************************
- * Subroutine to read KEYs
- ****************************************************************************************/
+// This function checks which of the pushbuttons was pressed.
 void check_KEYs(int *KEY0, int *KEY1, int *counter) {
     volatile int *KEY_ptr = (int *)KEY_BASE;
     volatile int *audio_ptr = (int *)AUDIO_BASE;
@@ -178,21 +195,22 @@ void check_KEYs(int *KEY0, int *KEY1, int *counter) {
     }
 }
 
+// this function normalizes the audio samples in the buffer to values between -1 and 1.
 void normalize_audio(float *input_buffer, float *output_buffer, int size) {
 	float max_val = 0.0f;
 
-	// Find the maximum absolute value
+	// Find the maximum absolute value. Subtract 32768 from each sample of the input buffer so that the samples are signed integers and so that the numbers will be between -1 and 1.
 	for (int i = 0; i < size; i++) {
-		float signed_val = input_buffer[i] - 32768.0f;  // Adjusting for unsigned 16-bit PCM
+		float signed_val = input_buffer[i] - 32768.0f;
 		float abs_val = fabs(signed_val);
 		if (abs_val > max_val) {
 			max_val = abs_val;
 		}
 	}
 
-	// Prevent division by zero
+	// Prevent division by zero by setting the max value to 1 if it is 0.
 	if (max_val == 0) {
-		max_val = 1.0f;  // To avoid division by zero
+		max_val = 1.0f;
 	}
 
 	// Normalize the input buffer to numbers between -1 and 1.
@@ -202,6 +220,7 @@ void normalize_audio(float *input_buffer, float *output_buffer, int size) {
 }
 
 // Source for this function: https://www.sciencedirect.com/topics/engineering/hamming-window.
+// This function applies the Hamming window to reduce spectral leakage.
 void hamming_window(float *input, float *output, int size) {
     for (int i = 0; i < size; i++) {
         float alpha = 0.54f;
@@ -211,6 +230,7 @@ void hamming_window(float *input, float *output, int size) {
     }
 }
 
+// This function performs Fast Fourier Transform on the input buffer containing the windowed input data.
 void fft(float *input_buffer, kiss_fft_cpx *output_buffer) {
     kiss_fft_cfg config;
 
@@ -230,6 +250,7 @@ void fft(float *input_buffer, kiss_fft_cpx *output_buffer) {
     kiss_fft_free(config);
 }
 
+// This function computes the mfcc values of an input buffer. It splits the buffer into frames of 1024 samples with an overlap of 512, prints to the display the current operations and computes the Mel Frequency Cepstral Coefficients of each
 void calculate_mfcc(float *input_buffer, int signal_length, float *mfcc_buffer) {
     float frame[FFT_SIZE];
     float windowed_frame[FFT_SIZE];
@@ -255,7 +276,7 @@ void calculate_mfcc(float *input_buffer, int signal_length, float *mfcc_buffer) 
         }
 
         writeToLCD("Calculating     \0", "MFCCs...        \0");
-        // Calculate MFCCs for the current frame.
+        // Calculate MFCCs for the current frame. Each frame contains 13 values.
         for (int m = 0; m < NUM_MFCC; m++) {
             mfcc_buffer[frame_num * NUM_MFCC + m] = GetCoefficient(magnitude_spectrum, 8192, NUM_FILTERS, FFT_SIZE, m);
         }
@@ -304,6 +325,7 @@ double compare_mfcc_buffers(float *mfcc_buffer_input, float *mfcc_buffer_data) {
 	return distances_frames[num_frames_mfcc-1][num_frames_mfcc-1];
 }
 
+// This function clears both rows of the lcd.
 void clearLCD() {
 	for (int i = 0; i < 16; i++) {
 		alt_up_character_lcd_erase_pos(char_lcd_dev, i, 0);
@@ -311,6 +333,7 @@ void clearLCD() {
 	}
 }
 
+// This function clears the lcd display and then places the first_row string on the first row and the second_row string on the second row. Max characters per row is 16.
 void writeToLCD(char* first_row, char* second_row) {
 	clearLCD();
 	alt_up_character_lcd_set_cursor_pos(char_lcd_dev, 0, 0);
@@ -320,11 +343,12 @@ void writeToLCD(char* first_row, char* second_row) {
 }
 
 void checkIfSDCardIsPresent() {
-	//printf("test");
+	// Check if the alt_up_sd_card_dev is instantiated. Else print error with sd card to the console.
 	if (sd_card_dev != NULL) {
-		//printf("test");
+		// If there is an sd card connected, set the connected variable to 1 and print SD Card detected to the console. If connected is 1 and there is no sd card, print sd card is disconnected and set connected to 0.
 		if (connected == 0 && alt_up_sd_card_is_Present()) {
 			printf("SD Card detected\n");
+			// If the SD card is formatted to FAT16, print that a FAT16 file system is detected. Else print an unknown system detected.
 			if (alt_up_sd_card_is_FAT16()) {
 				printf("FAT16 file system detected\n");
 			}
@@ -343,32 +367,38 @@ void checkIfSDCardIsPresent() {
 	}
 }
 
+/* This code reads the speified file from the sd card, places all of the characters in a character buffer, separates the entire string on commas and places each value that is separated by comma in a buffer.
+ * strtok documentation: https://www.tutorialspoint.com/c_standard_library/c_function_strtok.htm
+ */
 bool get_values_from_sd_card_file(char* filename, float *output) {
-    short int file_handle = alt_up_sd_card_fopen(filename, false);
-    if (file_handle == -1) {
-        printf("Could not open file: %s\n", filename);
+    short int file = alt_up_sd_card_fopen(filename, false);
+    if (file == -1) {
+        printf("Could not open %s\n", filename);
         return false;
     }
 
     char buffer[4096];
-    int buffer_index = 0;
-    int byte_read;
+    int i = 0;
+    int byte;
 
-    // Read file into buffer
-    while ((byte_read = alt_up_sd_card_read(file_handle)) >= 0) {
-        if (buffer_index < 4096 - 1) {
-            buffer[buffer_index++] = (char) byte_read;
+    // Read the txt file and place the characters in a buffer.
+    while ((byte = alt_up_sd_card_read(file)) >= 0) {
+        if (i < 4096 - 1) {
+            buffer[i++] = (char) byte;
         } else {
-            printf("Buffer overflow while reading file.\n");
-            alt_up_sd_card_fclose(file_handle);
+            printf("Buffer overflow.\n");
+            alt_up_sd_card_fclose(file);
             return false;
         }
     }
-    buffer[buffer_index] = '\0'; // Null-terminate the buffer
 
-    alt_up_sd_card_fclose(file_handle);
+    // Null terminate the buffer.
+    buffer[i] = '\0';
 
-    // Parse buffer contents
+    // Close the file as it is no longer needed.
+    alt_up_sd_card_fclose(file);
+
+    // split the string on the comma, convert the values to float and place them in the output array.
     int output_index = 0;
     char *token = strtok(buffer, ",");
     while (token != NULL) {
@@ -376,15 +406,10 @@ bool get_values_from_sd_card_file(char* filename, float *output) {
         token = strtok(NULL, ",");
     }
 
-    // Debug: Print the values read
-//    printf("Values read from file %s:\n", filename);
-//    for (int i = 0; i < output_index; i++) {
-//        printf("%f\n", output[i]);
-//    }
-
     return true;
 }
 
+// This function lists all the files that are stored on the connected sd card.
 void list_files_on_sd_card() {
     char filename[13];  // 8.3 filename format + null terminator
 
